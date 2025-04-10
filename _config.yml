@@ -35,6 +35,8 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-seo-tag
 markdown: kramdown
 # Exclude from processing.
 # The following items will not be processed, by default.
