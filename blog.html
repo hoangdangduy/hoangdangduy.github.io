@@ -1,14 +1,14 @@
 ---
-layout: default
-title: Blog
+layout: null
+permalink: /blog.html
 ---
-<h1>Latest Posts</h1>
-
-<ul>
-    {% for post in site.posts %}
-    <li>
-        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        {{ post.excerpt }}
-    </li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="refresh" content="0; url={{ '/blog/' | relative_url }}">
+        <title>Redirecting...</title>
+    </head>
+    <body>
+        <p>If you are not redirected, <a href="{{ '/blog/' | relative_url }}">click here</a>.</p>
+    </body>
+</html>
