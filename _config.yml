@@ -38,6 +38,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-paginate
+  - jekyll-archives
 markdown: kramdown
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -79,6 +80,29 @@ defaults:
       layout: "default"
 
 # Pagination settings
-paginate: 5  # Number of posts per page
-paginate_path: "/blog/page:num/"  # URL structure for paginated pages
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: '/page/:num/'
+  title: ':title - Page :num'
+  sort_field: 'date'
+  sort_reverse: true
+  trail:
+    before: 2
+    after: 2
+
+# Archives settings
+jekyll-archives:
+  enabled:
+    - tags
+
+autopages:
+  enabled: true
+  categories:
+    layouts:
+      - 'category.html'
+    title: 'Category: :cat'
+    permalink: '/category/:cat'
+
+
 permalink: pretty

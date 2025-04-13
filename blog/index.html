@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Blog
+pagination:
+  enabled: true
 ---
 
 <div class="bg-white p-4 rounded shadow-sm">
@@ -38,15 +40,23 @@ title: Blog
             {% endif %}
 
             <!-- Page numbers -->
-            {% for page in (1..paginator.total_pages) %}
-            {% if page == paginator.page %}
-            <li class="page-item active"><span class="page-link">{{ page }}</span></li>
+            {% if paginator.page_trail %}
+                {% for trail in paginator.page_trail %}
+                <li class="page-item {% if page.url == trail.path %}active{% endif %}">
+                    <a class="page-link" href="{{ trail.path | relative_url }}" title="{{trail.title}}">{{ trail.num }}</a>
+                </li>
+                {% endfor %}
             {% else %}
-            <li class="page-item">
-                <a class="page-link" href="{% if page == 1 %}{{ '/blog/' | relative_url }}{% else %}{{ site.paginate_path | relative_url | replace: ':num', page }}{% endif %}">{{ page }}</a>
-            </li>
+                {% for page in (1..paginator.total_pages) %}
+                {% if page == paginator.page %}
+                <li class="page-item active"><span class="page-link">{{ page }}</span></li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{% if page == 1 %}{{ '/blog/' | relative_url }}{% else %}{{ site.pagination.permalink | replace: ':num', page | prepend: '/blog' | relative_url }}{% endif %}">{{ page }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
             {% endif %}
-            {% endfor %}
 
             <!-- Next page link -->
             {% if paginator.next_page %}
