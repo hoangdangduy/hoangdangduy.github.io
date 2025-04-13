@@ -103,6 +103,9 @@ autopages:
       - 'category.html'
     title: 'Category: :cat'
     permalink: '/category/:cat'
-
+  collections:
+    enabled: false
+  tags:
+    enabled: false
 
 permalink: pretty
