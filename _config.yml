@@ -81,3 +81,4 @@ defaults:
 # Pagination settings
 paginate: 5  # Number of posts per page
 paginate_path: "/blog/page:num/"  # URL structure for paginated pages
+permalink: pretty
