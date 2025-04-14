@@ -1,76 +1,293 @@
----
-layout: default
-title: Blog
-pagination:
-  enabled: true
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic meta tags for character set and responsive design -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="bg-white p-4 rounded shadow-sm">
+    <!-- Page title from Jekyll front matter -->
+    <title>Blog</title>
+
+    <!-- External stylesheets: Bootstrap CSS framework and Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS file from your Jekyll project -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <!-- Jekyll plugins for RSS feed and SEO optimization -->
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Your awesome title" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Blog | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Blog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<link rel="canonical" href="/blog/" />
+<meta property="og:url" content="/blog/" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="website" />
+<link rel="next" href="/blog/page/2/" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Blog" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Blog","url":"/blog/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body class="bg-light">
+    <!-- Header section with navigation menu -->
+    <header class="bg-white shadow-sm mb-4">
+      <div class="container">
+        <!-- Include navigation.html from _includes directory -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/blog">Blog</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/staff">Staff</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/about">About</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="container pb-5">
+      <div class="row">
+        <!-- Main content column (8/12 width on medium screens and above) -->
+        <div class="col-md-8">
+          <div class="bg-white p-4 rounded shadow-sm">
     <h1>Latest Posts</h1>
 
     <!-- Posts list -->
-    {% for post in paginator.posts %}
+    
     <article class="mb-4 pb-4 border-bottom">
-        <h2><a href="{{ post.url }}" class="text-decoration-none">{{ post.title }}</a></h2>
+        <h2><a href="/category-1/category-2/2025/04/05/NAME-OF-POST/" class="text-decoration-none">POST-TITLE</a></h2>
         <p class="text-muted">
-            <i class="bi bi-calendar-event"></i> {{ post.date | date: "%b %-d, %Y" }}
-            {% assign author = site.authors | where: 'short_name', post.author | first %}
-            {% if author %} • <i class="bi bi-person"></i> <a href="{{ author.url }}">{{ author.name }}</a>{% endif %}
+            <i class="bi bi-calendar-event"></i> Apr 5, 2025
+            
+             • <i class="bi bi-person"></i> <a href="/authors/jill/">Jill Smith</a>
         </p>
-        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-        <a href="{{ post.url }}" class="btn btn-primary btn-sm">Read More</a>
+        <p>
+</p>
+        <a href="/category-1/category-2/2025/04/05/NAME-OF-POST/" class="btn btn-primary btn-sm">Read More</a>
     </article>
-    {% endfor %}
+    
+    <article class="mb-4 pb-4 border-bottom">
+        <h2><a href="/jekyll/update/2025/04/05/welcome-to-jekyll/" class="text-decoration-none">Welcome to Jekyll!</a></h2>
+        <p class="text-muted">
+            <i class="bi bi-calendar-event"></i> Apr 5, 2025
+            
+             • <i class="bi bi-person"></i> <a href="/authors/jill/">Jill Smith</a>
+        </p>
+        <p>You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when...</p>
+        <a href="/jekyll/update/2025/04/05/welcome-to-jekyll/" class="btn btn-primary btn-sm">Read More</a>
+    </article>
+    
+    <article class="mb-4 pb-4 border-bottom">
+        <h2><a href="/jekyll/update/2020/01/08/bananas/" class="text-decoration-none">Bananas</a></h2>
+        <p class="text-muted">
+            <i class="bi bi-calendar-event"></i> Jan 8, 2020
+            
+             • <i class="bi bi-person"></i> <a href="/authors/jill/">Jill Smith</a>
+        </p>
+        <p>A banana is an edible fruit – botanically a berry – produced by several
+kinds of large herbaceous flowering plants in the genus Musa.
+
+</p>
+        <a href="/jekyll/update/2020/01/08/bananas/" class="btn btn-primary btn-sm">Read More</a>
+    </article>
+    
+    <article class="mb-4 pb-4 border-bottom">
+        <h2><a href="/jekyll/update/2020/01/07/bananas/" class="text-decoration-none">Bananas</a></h2>
+        <p class="text-muted">
+            <i class="bi bi-calendar-event"></i> Jan 7, 2020
+            
+             • <i class="bi bi-person"></i> <a href="/authors/jill/">Jill Smith</a>
+        </p>
+        <p>A banana is an edible fruit – botanically a berry – produced by several
+kinds of large herbaceous flowering plants in the genus Musa.
+
+</p>
+        <a href="/jekyll/update/2020/01/07/bananas/" class="btn btn-primary btn-sm">Read More</a>
+    </article>
+    
+    <article class="mb-4 pb-4 border-bottom">
+        <h2><a href="/jekyll/update/2020/01/06/bananas/" class="text-decoration-none">Bananas</a></h2>
+        <p class="text-muted">
+            <i class="bi bi-calendar-event"></i> Jan 6, 2020
+            
+             • <i class="bi bi-person"></i> <a href="/authors/jill/">Jill Smith</a>
+        </p>
+        <p>A banana is an edible fruit – botanically a berry – produced by several
+kinds of large herbaceous flowering plants in the genus Musa.
+
+</p>
+        <a href="/jekyll/update/2020/01/06/bananas/" class="btn btn-primary btn-sm">Read More</a>
+    </article>
+    
 
     <!-- Pagination navigation -->
-    {% if paginator.total_pages > 1 %}
+    
     <nav aria-label="Page navigation" class="mt-4">
         <ul class="pagination justify-content-center">
             <!-- Previous page link -->
-            {% if paginator.previous_page %}
-            <li class="page-item">
-                <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            {% else %}
+            
             <li class="page-item disabled">
                 <span class="page-link">&laquo;</span>
             </li>
-            {% endif %}
+            
 
             <!-- Page numbers -->
-            {% if paginator.page_trail %}
-                {% for trail in paginator.page_trail %}
-                <li class="page-item {% if page.url == trail.path %}active{% endif %}">
-                    <a class="page-link" href="{{ trail.path | relative_url }}" title="{{trail.title}}">{{ trail.num }}</a>
+            
+                
+                <li class="page-item active">
+                    <a class="page-link" href="/blog/index.html" title="Blog">1</a>
                 </li>
-                {% endfor %}
-            {% else %}
-                {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-                <li class="page-item active"><span class="page-link">{{ page }}</span></li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="{% if page == 1 %}{{ '/blog/' | relative_url }}{% else %}{{ site.pagination.permalink | replace: ':num', page | prepend: '/blog' | relative_url }}{% endif %}">{{ page }}</a>
+                
+                <li class="page-item ">
+                    <a class="page-link" href="/blog/page/2/index.html" title="Blog - Page 2">2</a>
                 </li>
-                {% endif %}
-                {% endfor %}
-            {% endif %}
+                
+                <li class="page-item ">
+                    <a class="page-link" href="/blog/page/3/index.html" title="Blog - Page 3">3</a>
+                </li>
+                
+                <li class="page-item ">
+                    <a class="page-link" href="/blog/page/4/index.html" title="Blog - Page 4">4</a>
+                </li>
+                
+            
 
             <!-- Next page link -->
-            {% if paginator.next_page %}
+            
             <li class="page-item">
-                <a class="page-link" href="{{ paginator.next_page_path | relative_url }}" aria-label="Next">
+                <a class="page-link" href="/blog/page/2/" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
-            {% else %}
-            <li class="page-item disabled">
-                <span class="page-link">&raquo;</span>
-            </li>
-            {% endif %}
+            
         </ul>
     </nav>
-    {% endif %}
+    
 </div>
+        </div>
+
+        <!-- Sidebar column (4/12 width on medium screens and above) -->
+<div class="col-md-4">
+  <!-- Recent Posts widget -->
+  <div class="bg-white p-4 rounded shadow-sm mb-4">
+    <h4 class="mb-3">Recent Posts</h4>
+    <ul class="list-unstyled">
+      <!-- Loop through 5 most recent posts -->
+      
+        <li class="mb-2">
+          <a href="/category-1/category-2/2025/04/05/NAME-OF-POST/" class="text-decoration-none">POST-TITLE</a>
+          <small class="text-muted d-block">Apr 5, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/jekyll/update/2025/04/05/welcome-to-jekyll/" class="text-decoration-none">Welcome to Jekyll!</a>
+          <small class="text-muted d-block">Apr 5, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/jekyll/update/2020/01/08/bananas/" class="text-decoration-none">Bananas</a>
+          <small class="text-muted d-block">Jan 8, 2020</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/jekyll/update/2020/01/07/bananas/" class="text-decoration-none">Bananas</a>
+          <small class="text-muted d-block">Jan 7, 2020</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/jekyll/update/2020/01/06/bananas/" class="text-decoration-none">Bananas</a>
+          <small class="text-muted d-block">Jan 6, 2020</small>
+        </li>
+      
+    </ul>
+  </div>
+
+  <!-- Categories widget -->
+  <div class="bg-white p-4 rounded shadow-sm">
+    <h4 class="mb-3">Categories</h4>
+    <div class="categories">
+      <!-- Loop through all categories -->
+      
+        <a href="/category/jekyll" class="badge bg-primary text-decoration-none mb-1">
+          jekyll (14)
+        </a>
+      
+        <a href="/category/update" class="badge bg-primary text-decoration-none mb-1">
+          update (14)
+        </a>
+      
+        <a href="/category/category-1" class="badge bg-primary text-decoration-none mb-1">
+          CATEGORY-1 (1)
+        </a>
+      
+        <a href="/category/category-2" class="badge bg-primary text-decoration-none mb-1">
+          CATEGORY-2 (1)
+        </a>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- About section -->
+          <div class="col-md-6">
+            <h5>About This Site</h5>
+            <p>This is a Jekyll-based blog featuring various topics and articles.</p>
+          </div>
+
+          <!-- Contact information section -->
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-envelope"></i> email@example.com</li>
+              <li><i class="bi bi-github"></i> <a href="https://github.com/hoangdangduy" class="text-white">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright information -->
+        <div class="text-center mt-4">
+          <p>&copy; Your awesome title 2025. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript bundle for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
