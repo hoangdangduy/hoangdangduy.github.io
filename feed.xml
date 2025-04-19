@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-04-19T10:24:16+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title><link href="/design_system/2025/04/19/consistency-hashing/" rel="alternate" type="text/html" title="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" /><published>2025-04-19T08:40:00+00:00</published><updated>2025-04-19T08:40:00+00:00</updated><id>/design_system/2025/04/19/consistency-hashing</id><content type="html" xml:base="/design_system/2025/04/19/consistency-hashing/"><![CDATA[<p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-04-19T14:31:05+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title><link href="/design_system/2025/04/19/consistency-hashing/" rel="alternate" type="text/html" title="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" /><published>2025-04-19T08:40:00+00:00</published><updated>2025-04-19T08:40:00+00:00</updated><id>/design_system/2025/04/19/consistency-hashing</id><content type="html" xml:base="/design_system/2025/04/19/consistency-hashing/"><![CDATA[<p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
 
 <p>Đầu tiên chúng ta cần phải hiểu consistency hashing là gì?</p>
 
@@ -8,7 +8,7 @@
 
 <p>Giả sử chúng ta có 3 server có tên là s1, s2 và s3.</p>
 
-<p><img src="/assets/images/consistency-hashing/consitency-hashing-1.png" alt="consitency-hashing-1.png" /></p>
+<p><img src="/assets/images/consistency-hashing/consitency-hashing-1.png" alt="consitency-hashing-1.png" class="img-fluid" /></p>
 
 <p>Mỗi server sẽ có 1 giá trị hash khác nhau, ta sẽ quy ước là hash(server) , có thể lấy địa chỉ IP của server miễn sao đảm bảo nó là duy nhất.</p>
 
@@ -33,7 +33,7 @@ Ta sẽ lưu được x và y vào s2, z vào s3.</li>
   </li>
 </ul>
 
-<p><img src="/assets/images/consistency-hashing/consitency-hashing-2.png" alt="consitency-hashing-2.png" /></p>
+<p><img src="/assets/images/consistency-hashing/consitency-hashing-2.png" alt="consitency-hashing-2.png" class="img-fluid" /></p>
 
 <p>Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server.</p>
 
@@ -64,7 +64,7 @@ Ta sẽ có:</p>
 
 <p>Sau khi có virtual thì dữ liệu sẽ được phân phối lại như sau:</p>
 
-<p><img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3.png" /></p>
+<p><img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3.png" class="img-fluid" /></p>
 
 <p>Như vậy với ý tưởng này chúng ta đã giải quyết được cách lưu trữ dữ liệu trong hệ thống phân tán.</p>
 
