@@ -1,3 +1,17 @@
 ---
 ---
 @import "main";
+
+code {
+  background-color: #f8f9fa;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 90%;
+}
+
+pre {
+  background-color: #f8f9fa;
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
