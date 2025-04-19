@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-04-19T14:31:05+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title><link href="/design_system/2025/04/19/consistency-hashing/" rel="alternate" type="text/html" title="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" /><published>2025-04-19T08:40:00+00:00</published><updated>2025-04-19T08:40:00+00:00</updated><id>/design_system/2025/04/19/consistency-hashing</id><content type="html" xml:base="/design_system/2025/04/19/consistency-hashing/"><![CDATA[<p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-04-19T17:14:42+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title><link href="/design-system/2025/04/19/consistency-hashing/" rel="alternate" type="text/html" title="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" /><published>2025-04-19T08:40:00+00:00</published><updated>2025-04-19T08:40:00+00:00</updated><id>/design-system/2025/04/19/consistency-hashing</id><content type="html" xml:base="/design-system/2025/04/19/consistency-hashing/"><![CDATA[<p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
 
 <p>Đầu tiên chúng ta cần phải hiểu consistency hashing là gì?</p>
 
-<p>Hiểu đơn giản ở ngay tên gọi là cách băm (hash) các giá trị theo một cách chung để lưu trữ lại cũng như lấy ra.</p>
-
-<p>Vậy khi làm như thế chúng ta sẽ điều hướng được data cần lưu vào những server mong muốn.</p>
+<p>Consistency hashing là cách triển khai hash (băm) các giá trị theo cách thống nhất để lưu trữ và nhận dữ liệu hiệu quả.</p>
 
 <p>Giả sử chúng ta có 3 server có tên là s1, s2 và s3.</p>
 
-<p><img src="/assets/images/consistency-hashing/consitency-hashing-1.png" alt="consitency-hashing-1.png" class="img-fluid" /></p>
+<div style="text-align: center;">
+  <img src="/assets/images/consistency-hashing/consitency-hashing-1.png" alt="consitency-hashing-1" class="img-fluid" />
+  <p class="text-muted">Hình 1: Mô hình triển khai</p>
+</div>
 
-<p>Mỗi server sẽ có 1 giá trị hash khác nhau, ta sẽ quy ước là hash(server) , có thể lấy địa chỉ IP của server miễn sao đảm bảo nó là duy nhất.</p>
+<p>Thêm 3 server vào hệ thống để lưu trữ dữ liệu</p>
+
+<p>Mỗi server sẽ có 1 giá trị hash khác nhau, ta sẽ quy ước là hash(server), có thể lấy địa chỉ IP của server miễn sao đảm bảo nó là duy nhất.</p>
 
 <p>Khi dữ liệu được insert vào server thì chúng cũng sẽ được hash(data) và so sánh với value hash của server. Ta sẽ tìm được server có giá trị hash gần với hash(data) nhất.</p>
 
@@ -33,9 +36,32 @@ Ta sẽ lưu được x và y vào s2, z vào s3.</li>
   </li>
 </ul>
 
-<p><img src="/assets/images/consistency-hashing/consitency-hashing-2.png" alt="consitency-hashing-2.png" class="img-fluid" /></p>
+<div style="text-align: center;">
+  <img src="/assets/images/consistency-hashing/consitency-hashing-2.png" alt="consitency-hashing-2" class="img-fluid" />
+  <p class="text-muted">Hình 2: Phân phối dữ liệu vào server</p>
+</div>
 
-<p>Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server.</p>
+<h3 id="example-code">Example code:</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Lưu dữ liệu vào server</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">saveData</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">,</span> <span class="nc">String</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">getNode</span><span class="o">(</span><span class="n">key</span><span class="o">).</span><span class="na">getDataStore</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// Tìm ra server đã lưu dữ liệu</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Storage</span> <span class="nf">getNode</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">var</span> <span class="n">hash</span> <span class="o">=</span> <span class="nc">HashingStrategy</span><span class="o">.</span><span class="na">generateHash</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">mapConsistencyHashing</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">var</span> <span class="n">map</span> <span class="o">=</span> <span class="n">mapConsistencyHashing</span><span class="o">.</span><span class="na">headMap</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+        <span class="kt">var</span> <span class="n">firstKey</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">firstKey</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">firstKey</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kt">var</span> <span class="n">firstKey</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">firstKey</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">firstKey</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server vật lý, tránh tập trung lưu trữ chỉ tại một nơi.</p>
 
 <p>Mỗi server sẽ tạo thành 2 virtual node và hash(virtual_node) như cách làm với node.
 Ta sẽ có:</p>
@@ -64,14 +90,34 @@ Ta sẽ có:</p>
 
 <p>Sau khi có virtual thì dữ liệu sẽ được phân phối lại như sau:</p>
 
-<p><img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3.png" class="img-fluid" /></p>
+<div style="text-align: center;">
+  <img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3" class="img-fluid" />
+  <p class="text-muted">Hình 3: Phân phối dữ liệu sau khi thêm virtual node</p>
+</div>
+
+<h3 id="example-code-1">Example code:</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Khởi tạo các server</span>
+<span class="nc">ConsistencyHashing</span><span class="o">.</span><span class="na">addServer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Storage</span><span class="o">(</span><span class="s">"server-1"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ConcurrentHashMap</span><span class="o">&lt;&gt;()));</span>
+<span class="nc">ConsistencyHashing</span><span class="o">.</span><span class="na">addServer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Storage</span><span class="o">(</span><span class="s">"server-2"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ConcurrentHashMap</span><span class="o">&lt;&gt;()));</span>
+<span class="nc">ConsistencyHashing</span><span class="o">.</span><span class="na">addServer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Storage</span><span class="o">(</span><span class="s">"server-3"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ConcurrentHashMap</span><span class="o">&lt;&gt;()));</span>
+
+<span class="c1">// Mỗi server vật lý sẽ chuyển sang tạo virtual node tương ứng</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addServer</span><span class="o">(</span><span class="nc">Storage</span> <span class="n">storage</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">VIRTUAL_NODE</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">var</span> <span class="n">hash</span> <span class="o">=</span> <span class="nc">HashingStrategy</span><span class="o">.</span><span class="na">generateHash</span><span class="o">(</span><span class="n">storage</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">concat</span><span class="o">(</span><span class="s">"-"</span><span class="o">).</span><span class="na">concat</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+        <span class="n">mapConsistencyHashing</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">storage</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <p>Như vậy với ý tưởng này chúng ta đã giải quyết được cách lưu trữ dữ liệu trong hệ thống phân tán.</p>
 
 <p>Để hiểu cách thức triển khai và nắm rõ hơn về cách áp dụng thì các bạn có thể suy nghĩ thêm các câu hỏi mở rộng:</p>
 <ul>
   <li>Khi thêm 1 server mới vào mô hình trên thì các dữ liệu đã được gán vào server cũ sẽ phân phối lại như nào?</li>
-</ul>]]></content><author><name></name></author><category term="design_system" /><summary type="html"><![CDATA[Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.]]></summary></entry><entry><title type="html">POST-TITLE</title><link href="/category-1/category-2/2025/04/05/NAME-OF-POST/" rel="alternate" type="text/html" title="POST-TITLE" /><published>2025-04-05T15:21:35+00:00</published><updated>2025-04-05T15:21:35+00:00</updated><id>/category-1/category-2/2025/04/05/NAME-OF-POST</id><content type="html" xml:base="/category-1/category-2/2025/04/05/NAME-OF-POST/"><![CDATA[]]></content><author><name></name></author><category term="CATEGORY-1" /><category term="CATEGORY-2" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/update/2025/04/05/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2025-04-05T10:48:35+00:00</published><updated>2025-04-05T10:48:35+00:00</updated><id>/jekyll/update/2025/04/05/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/update/2025/04/05/welcome-to-jekyll/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+</ul>
+
+<p>Source code tham khảo: <a href="">https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing</a></p>]]></content><author><name>hoangdd</name></author><category term="design-system" /><summary type="html"><![CDATA[Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.]]></summary></entry><entry><title type="html">POST-TITLE</title><link href="/category-1/category-2/2025/04/05/NAME-OF-POST/" rel="alternate" type="text/html" title="POST-TITLE" /><published>2025-04-05T15:21:35+00:00</published><updated>2025-04-05T15:21:35+00:00</updated><id>/category-1/category-2/2025/04/05/NAME-OF-POST</id><content type="html" xml:base="/category-1/category-2/2025/04/05/NAME-OF-POST/"><![CDATA[]]></content><author><name></name></author><category term="CATEGORY-1" /><category term="CATEGORY-2" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/update/2025/04/05/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2025-04-05T10:48:35+00:00</published><updated>2025-04-05T10:48:35+00:00</updated><id>/jekyll/update/2025/04/05/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/update/2025/04/05/welcome-to-jekyll/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 

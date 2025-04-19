@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic meta tags for character set and responsive design -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page title from Jekyll front matter -->
+    <title>Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title>
+
+    <!-- External stylesheets: Bootstrap CSS framework and Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS file from your Jekyll project -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <!-- Jekyll plugins for RSS feed and SEO optimization -->
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Your awesome title" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" />
+<meta name="author" content="hoangdd" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó." />
+<meta property="og:description" content="Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó." />
+<link rel="canonical" href="/design-system/2025/04/19/consistency-hashing/" />
+<meta property="og:url" content="/design-system/2025/04/19/consistency-hashing/" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-04-19T08:40:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-04-19T08:40:00+00:00","datePublished":"2025-04-19T08:40:00+00:00","description":"Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.","headline":"Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing","mainEntityOfPage":{"@type":"WebPage","@id":"/design-system/2025/04/19/consistency-hashing/"},"url":"/design-system/2025/04/19/consistency-hashing/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body class="bg-light">
+    <!-- Header section with navigation menu -->
+    <header class="bg-white shadow-sm mb-4">
+      <div class="container">
+        <!-- Include navigation.html from _includes directory -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/blog">Blog</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/staff">Staff</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link "
+                       href="/about">About</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="container pb-5">
+      <div class="row">
+        <!-- Main content column (8/12 width on medium screens and above) -->
+        <div class="col-md-8">
+          <div class="bg-white p-4 rounded shadow-sm">
+  <h1>Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</h1>
+
+  <p class="text-muted mb-3">
+    <i class="bi bi-calendar-event"></i> Apr 19, 2025
+
+    
+    
+    • <i class="bi bi-person"></i> <a href="/authors/hoangdd/">hoangdd</a>
+    
+
+     •
+      <span class="categories">
+        <i class="bi bi-tags"></i>
+        
+          <span class="badge bg-secondary">design-system</span>
+        
+      </span>
+    
+  </p>
+
+  <p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
+
+<p>Đầu tiên chúng ta cần phải hiểu consistency hashing là gì?</p>
+
+<p>Consistency hashing là cách triển khai hash (băm) các giá trị theo cách thống nhất để lưu trữ và nhận dữ liệu hiệu quả.</p>
+
+<p>Giả sử chúng ta có 3 server có tên là s1, s2 và s3.</p>
+
+<div style="text-align: center;">
+  <img src="/assets/images/consistency-hashing/consitency-hashing-1.png" alt="consitency-hashing-1" class="img-fluid" />
+  <p class="text-muted">Hình 1: Mô hình triển khai</p>
+</div>
+
+<p>Thêm 3 server vào hệ thống để lưu trữ dữ liệu</p>
+
+<p>Mỗi server sẽ có 1 giá trị hash khác nhau, ta sẽ quy ước là hash(server), có thể lấy địa chỉ IP của server miễn sao đảm bảo nó là duy nhất.</p>
+
+<p>Khi dữ liệu được insert vào server thì chúng cũng sẽ được hash(data) và so sánh với value hash của server. Ta sẽ tìm được server có giá trị hash gần với hash(data) nhất.</p>
+
+<p>Ví dụ:</p>
+<ul>
+  <li>hash server:
+    <ul>
+      <li>hash(s1) = 10</li>
+      <li>hash(s2) = 20</li>
+      <li>hash(s3) = 30</li>
+    </ul>
+  </li>
+  <li>hash data:
+    <ul>
+      <li>hash(x) = 15</li>
+      <li>hash(y) = 17</li>
+      <li>hash(z) = 25
+Ta sẽ lưu được x và y vào s2, z vào s3.</li>
+    </ul>
+  </li>
+</ul>
+
+<div style="text-align: center;">
+  <img src="/assets/images/consistency-hashing/consitency-hashing-2.png" alt="consitency-hashing-2" class="img-fluid" />
+  <p class="text-muted">Hình 2: Phân phối dữ liệu vào server</p>
+</div>
+
+<h3 id="example-code">Example code:</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Lưu dữ liệu vào server</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">saveData</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">,</span> <span class="nc">String</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">getNode</span><span class="o">(</span><span class="n">key</span><span class="o">).</span><span class="na">getDataStore</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// Tìm ra server đã lưu dữ liệu</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Storage</span> <span class="nf">getNode</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">var</span> <span class="n">hash</span> <span class="o">=</span> <span class="nc">HashingStrategy</span><span class="o">.</span><span class="na">generateHash</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">mapConsistencyHashing</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">var</span> <span class="n">map</span> <span class="o">=</span> <span class="n">mapConsistencyHashing</span><span class="o">.</span><span class="na">headMap</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+        <span class="kt">var</span> <span class="n">firstKey</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">firstKey</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">firstKey</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kt">var</span> <span class="n">firstKey</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">firstKey</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">firstKey</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server vật lý, tránh tập trung lưu trữ chỉ tại một nơi.</p>
+
+<p>Mỗi server sẽ tạo thành 2 virtual node và hash(virtual_node) như cách làm với node.
+Ta sẽ có:</p>
+<ul>
+  <li>hash virtual node của s1
+    <ul>
+      <li>hash(s1_v1) = 11</li>
+      <li>hash(s1_v2) = 16</li>
+    </ul>
+  </li>
+  <li>hash virtual node của s2</li>
+  <li>
+    <ul>
+      <li>hash(s2_v1) = 21</li>
+      <li>hash(s2_v2) = 24</li>
+    </ul>
+  </li>
+  <li>hash virtual node của s3</li>
+  <li>
+    <ul>
+      <li>hash(s3_v1) = 26</li>
+      <li>hash(s3_v2) = 31</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Sau khi có virtual thì dữ liệu sẽ được phân phối lại như sau:</p>
+
+<div style="text-align: center;">
+  <img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3" class="img-fluid" />
+  <p class="text-muted">Hình 3: Phân phối dữ liệu sau khi thêm virtual node</p>
+</div>
+
+<h3 id="example-code-1">Example code:</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Khởi tạo các server</span>
+<span class="nc">ConsistencyHashing</span><span class="o">.</span><span class="na">addServer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Storage</span><span class="o">(</span><span class="s">"server-1"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ConcurrentHashMap</span><span class="o">&lt;&gt;()));</span>
+<span class="nc">ConsistencyHashing</span><span class="o">.</span><span class="na">addServer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Storage</span><span class="o">(</span><span class="s">"server-2"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ConcurrentHashMap</span><span class="o">&lt;&gt;()));</span>
+<span class="nc">ConsistencyHashing</span><span class="o">.</span><span class="na">addServer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Storage</span><span class="o">(</span><span class="s">"server-3"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ConcurrentHashMap</span><span class="o">&lt;&gt;()));</span>
+
+<span class="c1">// Mỗi server vật lý sẽ chuyển sang tạo virtual node tương ứng</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addServer</span><span class="o">(</span><span class="nc">Storage</span> <span class="n">storage</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">VIRTUAL_NODE</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">var</span> <span class="n">hash</span> <span class="o">=</span> <span class="nc">HashingStrategy</span><span class="o">.</span><span class="na">generateHash</span><span class="o">(</span><span class="n">storage</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">concat</span><span class="o">(</span><span class="s">"-"</span><span class="o">).</span><span class="na">concat</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+        <span class="n">mapConsistencyHashing</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">storage</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Như vậy với ý tưởng này chúng ta đã giải quyết được cách lưu trữ dữ liệu trong hệ thống phân tán.</p>
+
+<p>Để hiểu cách thức triển khai và nắm rõ hơn về cách áp dụng thì các bạn có thể suy nghĩ thêm các câu hỏi mở rộng:</p>
+<ul>
+  <li>Khi thêm 1 server mới vào mô hình trên thì các dữ liệu đã được gán vào server cũ sẽ phân phối lại như nào?</li>
+</ul>
+
+<p>Source code tham khảo: <a href="">https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing</a></p>
+
+</div>
+        </div>
+
+        <!-- Sidebar column (4/12 width on medium screens and above) -->
+<div class="col-md-4">
+  <!-- Recent Posts widget -->
+  <div class="bg-white p-4 rounded shadow-sm mb-4">
+    <h4 class="mb-3">Recent Posts</h4>
+    <ul class="list-unstyled">
+      <!-- Loop through 5 most recent posts -->
+      
+        <li class="mb-2">
+          <a href="/design-system/2025/04/19/consistency-hashing/" class="text-decoration-none">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</a>
+          <small class="text-muted d-block">Apr 19, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/category-1/category-2/2025/04/05/NAME-OF-POST/" class="text-decoration-none">POST-TITLE</a>
+          <small class="text-muted d-block">Apr 5, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/jekyll/update/2025/04/05/welcome-to-jekyll/" class="text-decoration-none">Welcome to Jekyll!</a>
+          <small class="text-muted d-block">Apr 5, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/jekyll/update/2018/08/23/bananas/" class="text-decoration-none">Bananas</a>
+          <small class="text-muted d-block">Aug 23, 2018</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/2018/08/22/kiwifruit/" class="text-decoration-none">Kiwifruit</a>
+          <small class="text-muted d-block">Aug 22, 2018</small>
+        </li>
+      
+    </ul>
+  </div>
+
+  <!-- Categories widget -->
+  <div class="bg-white p-4 rounded shadow-sm">
+    <h4 class="mb-3">Categories</h4>
+    <div class="categories">
+      <!-- Loop through all categories -->
+      
+        <a href="/category/jekyll" class="badge bg-primary text-decoration-none mb-1">
+          jekyll (2)
+        </a>
+      
+        <a href="/category/update" class="badge bg-primary text-decoration-none mb-1">
+          update (2)
+        </a>
+      
+        <a href="/category/category-1" class="badge bg-primary text-decoration-none mb-1">
+          CATEGORY-1 (1)
+        </a>
+      
+        <a href="/category/category-2" class="badge bg-primary text-decoration-none mb-1">
+          CATEGORY-2 (1)
+        </a>
+      
+        <a href="/category/design-system" class="badge bg-primary text-decoration-none mb-1">
+          design-system (1)
+        </a>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- About section -->
+          <div class="col-md-6">
+            <h5>About This Site</h5>
+            <p>This is a Jekyll-based blog featuring various topics and articles.</p>
+          </div>
+
+          <!-- Contact information section -->
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-envelope"></i> email@example.com</li>
+              <li><i class="bi bi-github"></i> <a href="https://github.com/hoangdangduy" class="text-white">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright information -->
+        <div class="text-center mt-4">
+          <p>&copy; Your awesome title 2025. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript bundle for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/authors/jill/</loc>
-<lastmod>2025-04-19T14:31:05+00:00</lastmod>
-</url>
-<url>
-<loc>/authors/ted/</loc>
-<lastmod>2025-04-19T14:31:05+00:00</lastmod>
+<loc>/authors/hoangdd/</loc>
+<lastmod>2025-04-19T17:14:42+00:00</lastmod>
 </url>
 <url>
 <loc>/2018/08/20/bananas/</loc>
@@ -33,7 +29,7 @@
 <lastmod>2025-04-05T15:21:35+00:00</lastmod>
 </url>
 <url>
-<loc>/design_system/2025/04/19/consistency-hashing/</loc>
+<loc>/design-system/2025/04/19/consistency-hashing/</loc>
 <lastmod>2025-04-19T08:40:00+00:00</lastmod>
 </url>
 <url>
@@ -61,6 +57,6 @@
 <loc>/category/category-2/</loc>
 </url>
 <url>
-<loc>/category/design_system/</loc>
+<loc>/category/design-system/</loc>
 </url>
 </urlset>
