@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-04-15T17:10:14+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">POST-TITLE</title><link href="/category-1/category-2/2025/04/05/NAME-OF-POST/" rel="alternate" type="text/html" title="POST-TITLE" /><published>2025-04-05T15:21:35+00:00</published><updated>2025-04-05T15:21:35+00:00</updated><id>/category-1/category-2/2025/04/05/NAME-OF-POST</id><content type="html" xml:base="/category-1/category-2/2025/04/05/NAME-OF-POST/"><![CDATA[]]></content><author><name></name></author><category term="CATEGORY-1" /><category term="CATEGORY-2" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/update/2025/04/05/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2025-04-05T10:48:35+00:00</published><updated>2025-04-05T10:48:35+00:00</updated><id>/jekyll/update/2025/04/05/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/update/2025/04/05/welcome-to-jekyll/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-04-19T10:24:16+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title><link href="/design_system/2025/04/19/consistency-hashing/" rel="alternate" type="text/html" title="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" /><published>2025-04-19T08:40:00+00:00</published><updated>2025-04-19T08:40:00+00:00</updated><id>/design_system/2025/04/19/consistency-hashing</id><content type="html" xml:base="/design_system/2025/04/19/consistency-hashing/"><![CDATA[<p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
+
+<p>Đầu tiên chúng ta cần phải hiểu consistency hashing là gì?</p>
+
+<p>Hiểu đơn giản ở ngay tên gọi là cách băm (hash) các giá trị theo một cách chung để lưu trữ lại cũng như lấy ra.</p>
+
+<p>Vậy khi làm như thế chúng ta sẽ điều hướng được data cần lưu vào những server mong muốn.</p>
+
+<p>Giả sử chúng ta có 3 server có tên là s1, s2 và s3.</p>
+
+<p><img src="/assets/images/consistency-hashing/consitency-hashing-1.png" alt="consitency-hashing-1.png" /></p>
+
+<p>Mỗi server sẽ có 1 giá trị hash khác nhau, ta sẽ quy ước là hash(server) , có thể lấy địa chỉ IP của server miễn sao đảm bảo nó là duy nhất.</p>
+
+<p>Khi dữ liệu được insert vào server thì chúng cũng sẽ được hash(data) và so sánh với value hash của server. Ta sẽ tìm được server có giá trị hash gần với hash(data) nhất.</p>
+
+<p>Ví dụ:</p>
+<ul>
+  <li>hash server:
+    <ul>
+      <li>hash(s1) = 10</li>
+      <li>hash(s2) = 20</li>
+      <li>hash(s3) = 30</li>
+    </ul>
+  </li>
+  <li>hash data:
+    <ul>
+      <li>hash(x) = 15</li>
+      <li>hash(y) = 17</li>
+      <li>hash(z) = 25
+Ta sẽ lưu được x và y vào s2, z vào s3.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/images/consistency-hashing/consitency-hashing-2.png" alt="consitency-hashing-2.png" /></p>
+
+<p>Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server.</p>
+
+<p>Mỗi server sẽ tạo thành 2 virtual node và hash(virtual_node) như cách làm với node.
+Ta sẽ có:</p>
+<ul>
+  <li>hash virtual node của s1
+    <ul>
+      <li>hash(s1_v1) = 11</li>
+      <li>hash(s1_v2) = 16</li>
+    </ul>
+  </li>
+  <li>hash virtual node của s2</li>
+  <li>
+    <ul>
+      <li>hash(s2_v1) = 21</li>
+      <li>hash(s2_v2) = 24</li>
+    </ul>
+  </li>
+  <li>hash virtual node của s3</li>
+  <li>
+    <ul>
+      <li>hash(s3_v1) = 26</li>
+      <li>hash(s3_v2) = 31</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Sau khi có virtual thì dữ liệu sẽ được phân phối lại như sau:</p>
+
+<p><img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3.png" /></p>
+
+<p>Như vậy với ý tưởng này chúng ta đã giải quyết được cách lưu trữ dữ liệu trong hệ thống phân tán.</p>
+
+<p>Để hiểu cách thức triển khai và nắm rõ hơn về cách áp dụng thì các bạn có thể suy nghĩ thêm các câu hỏi mở rộng:</p>
+<ul>
+  <li>Khi thêm 1 server mới vào mô hình trên thì các dữ liệu đã được gán vào server cũ sẽ phân phối lại như nào?</li>
+</ul>]]></content><author><name></name></author><category term="design_system" /><summary type="html"><![CDATA[Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.]]></summary></entry><entry><title type="html">POST-TITLE</title><link href="/category-1/category-2/2025/04/05/NAME-OF-POST/" rel="alternate" type="text/html" title="POST-TITLE" /><published>2025-04-05T15:21:35+00:00</published><updated>2025-04-05T15:21:35+00:00</updated><id>/category-1/category-2/2025/04/05/NAME-OF-POST</id><content type="html" xml:base="/category-1/category-2/2025/04/05/NAME-OF-POST/"><![CDATA[]]></content><author><name></name></author><category term="CATEGORY-1" /><category term="CATEGORY-2" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/update/2025/04/05/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2025-04-05T10:48:35+00:00</published><updated>2025-04-05T10:48:35+00:00</updated><id>/jekyll/update/2025/04/05/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/update/2025/04/05/welcome-to-jekyll/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 
@@ -14,60 +87,31 @@
 <span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
 <span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/08/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-08T00:00:00+00:00</published><updated>2020-01-08T00:00:00+00:00</updated><id>/jekyll/update/2020/01/08/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/08/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
+<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2018/08/23/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2018-08-23T00:00:00+00:00</published><updated>2018-08-23T00:00:00+00:00</updated><id>/jekyll/update/2018/08/23/bananas</id><content type="html" xml:base="/jekyll/update/2018/08/23/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
 kinds of large herbaceous flowering plants in the genus Musa.</p>
 
 <p>In some countries, bananas used for cooking may be called “plantains”,
 distinguishing them from dessert bananas. The fruit is variable in size,
 color, and firmness, but is usually elongated and curved, with soft
 flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/07/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-07T00:00:00+00:00</published><updated>2020-01-07T00:00:00+00:00</updated><id>/jekyll/update/2020/01/07/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/07/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
+red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Kiwifruit</title><link href="/2018/08/22/kiwifruit/" rel="alternate" type="text/html" title="Kiwifruit" /><published>2018-08-22T00:00:00+00:00</published><updated>2018-08-22T00:00:00+00:00</updated><id>/2018/08/22/kiwifruit</id><content type="html" xml:base="/2018/08/22/kiwifruit/"><![CDATA[<p>Kiwifruit (often abbreviated as kiwi), or Chinese gooseberry is the
+edible berry of several species of woody vines in the genus Actinidia.</p>
+
+<p>The most common cultivar group of kiwifruit is oval, about the size of
+a large hen’s egg (5–8 cm (2.0–3.1 in) in length and 4.5–5.5 cm
+(1.8–2.2 in) in diameter). It has a fibrous, dull greenish-brown skin
+and bright green or golden flesh with rows of tiny, black, edible
+seeds. The fruit has a soft texture, with a sweet and unique flavor.</p>]]></content><author><name>ted</name></author><summary type="html"><![CDATA[Kiwifruit (often abbreviated as kiwi), or Chinese gooseberry is the edible berry of several species of woody vines in the genus Actinidia.]]></summary></entry><entry><title type="html">Apples</title><link href="/2018/08/21/apples/" rel="alternate" type="text/html" title="Apples" /><published>2018-08-21T00:00:00+00:00</published><updated>2018-08-21T00:00:00+00:00</updated><id>/2018/08/21/apples</id><content type="html" xml:base="/2018/08/21/apples/"><![CDATA[<p>An apple is a sweet, edible fruit produced by an apple tree.</p>
+
+<p>Apple trees are cultivated worldwide, and are the most widely grown
+species in the genus Malus. The tree originated in Central Asia, where
+its wild ancestor, Malus sieversii, is still found today. Apples have
+been grown for thousands of years in Asia and Europe, and were brought
+to North America by European colonists.</p>]]></content><author><name>jill</name></author><summary type="html"><![CDATA[An apple is a sweet, edible fruit produced by an apple tree.]]></summary></entry><entry><title type="html">Bananas</title><link href="/2018/08/20/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2018-08-20T00:00:00+00:00</published><updated>2018-08-20T00:00:00+00:00</updated><id>/2018/08/20/bananas</id><content type="html" xml:base="/2018/08/20/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
 kinds of large herbaceous flowering plants in the genus Musa.</p>
 
 <p>In some countries, bananas used for cooking may be called “plantains”,
 distinguishing them from dessert bananas. The fruit is variable in size,
 color, and firmness, but is usually elongated and curved, with soft
 flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/06/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-06T00:00:00+00:00</published><updated>2020-01-06T00:00:00+00:00</updated><id>/jekyll/update/2020/01/06/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/06/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
-kinds of large herbaceous flowering plants in the genus Musa.</p>
-
-<p>In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size,
-color, and firmness, but is usually elongated and curved, with soft
-flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/05/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-05T00:00:00+00:00</published><updated>2020-01-05T00:00:00+00:00</updated><id>/jekyll/update/2020/01/05/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/05/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
-kinds of large herbaceous flowering plants in the genus Musa.</p>
-
-<p>In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size,
-color, and firmness, but is usually elongated and curved, with soft
-flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/04/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-04T00:00:00+00:00</published><updated>2020-01-04T00:00:00+00:00</updated><id>/jekyll/update/2020/01/04/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/04/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
-kinds of large herbaceous flowering plants in the genus Musa.</p>
-
-<p>In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size,
-color, and firmness, but is usually elongated and curved, with soft
-flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/03/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-03T00:00:00+00:00</published><updated>2020-01-03T00:00:00+00:00</updated><id>/jekyll/update/2020/01/03/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/03/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
-kinds of large herbaceous flowering plants in the genus Musa.</p>
-
-<p>In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size,
-color, and firmness, but is usually elongated and curved, with soft
-flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/02/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-02T00:00:00+00:00</published><updated>2020-01-02T00:00:00+00:00</updated><id>/jekyll/update/2020/01/02/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/02/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
-kinds of large herbaceous flowering plants in the genus Musa.</p>
-
-<p>In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size,
-color, and firmness, but is usually elongated and curved, with soft
-flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry><entry><title type="html">Bananas</title><link href="/jekyll/update/2020/01/01/bananas/" rel="alternate" type="text/html" title="Bananas" /><published>2020-01-01T00:00:00+00:00</published><updated>2020-01-01T00:00:00+00:00</updated><id>/jekyll/update/2020/01/01/bananas</id><content type="html" xml:base="/jekyll/update/2020/01/01/bananas/"><![CDATA[<p>A banana is an edible fruit – botanically a berry – produced by several
-kinds of large herbaceous flowering plants in the genus Musa.</p>
-
-<p>In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size,
-color, and firmness, but is usually elongated and curved, with soft
-flesh rich in starch covered with a rind, which may be green, yellow,
-red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry></feed>
+red, purple, or brown when ripe.</p>]]></content><author><name>jill</name></author><summary type="html"><![CDATA[A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.]]></summary></entry></feed>
