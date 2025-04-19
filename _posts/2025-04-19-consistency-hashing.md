@@ -14,7 +14,7 @@ Vậy khi làm như thế chúng ta sẽ điều hướng được data cần l�
 
 Giả sử chúng ta có 3 server có tên là s1, s2 và s3.
 
-![consitency-hashing-1.png]({{ site.baseurl }}/assets/images/consistency-hashing/consitency-hashing-1.png)
+![consitency-hashing-1.png]({{ site.baseurl }}/assets/images/consistency-hashing/consitency-hashing-1.png){: .img-fluid}
 
 Mỗi server sẽ có 1 giá trị hash khác nhau, ta sẽ quy ước là hash(server) , có thể lấy địa chỉ IP của server miễn sao đảm bảo nó là duy nhất.
 
@@ -31,7 +31,7 @@ Ví dụ:
   - hash(z) = 25
 Ta sẽ lưu được x và y vào s2, z vào s3.
 
-![consitency-hashing-2.png]({{ site.baseurl }}/assets/images/consistency-hashing/consitency-hashing-2.png)
+![consitency-hashing-2.png]({{ site.baseurl }}/assets/images/consistency-hashing/consitency-hashing-2.png){: .img-fluid}
 
 Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server.
 
@@ -49,7 +49,7 @@ Ta sẽ có:
 
 Sau khi có virtual thì dữ liệu sẽ được phân phối lại như sau:
 
-![consitency-hashing-3.png]({{ site.baseurl }}/assets/images/consistency-hashing/consitency-hashing-3.png)
+![consitency-hashing-3.png]({{ site.baseurl }}/assets/images/consistency-hashing/consitency-hashing-3.png){: .img-fluid}
 
 Như vậy với ý tưởng này chúng ta đã giải quyết được cách lưu trữ dữ liệu trong hệ thống phân tán.
 
