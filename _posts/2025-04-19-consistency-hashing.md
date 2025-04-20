@@ -104,4 +104,4 @@ Như vậy với ý tưởng này chúng ta đã giải quyết được cách l
 Để hiểu cách thức triển khai và nắm rõ hơn về cách áp dụng thì các bạn có thể suy nghĩ thêm các câu hỏi mở rộng:
 - Khi thêm 1 server mới vào mô hình trên thì các dữ liệu đã được gán vào server cũ sẽ phân phối lại như nào?
 
-Source code tham khảo: [https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing]()
+Source code tham khảo: [https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing](https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing)
