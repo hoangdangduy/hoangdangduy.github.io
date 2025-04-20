@@ -1,5 +1,74 @@
 ---
 layout: default
-title: Home
+title: Blog
+pagination:
+  enabled: true
 ---
-<h1>{{ "Hello World!" | downcase }}</h1>
+
+<div class="bg-white p-4 rounded shadow-sm">
+    <!-- Posts list -->
+    {% for post in paginator.posts %}
+    <article class="mb-4 pb-4 border-bottom">
+        <h2><a href="{{ post.url }}" class="text-decoration-none">{{ post.title }}</a></h2>
+        <p class="text-muted">
+            <i class="bi bi-calendar-event"></i> {{ post.date | date: "%b %-d, %Y" }}
+            {% assign author = site.authors | where: 'short_name', post.author | first %}
+            {% if author %} • <i class="bi bi-person"></i> <a href="{{ author.url }}">{{ author.name }}</a>{% endif %}
+        </p>
+        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+        <a href="{{ post.url }}" class="btn btn-primary btn-sm">Read More</a>
+    </article>
+    {% endfor %}
+
+    <!-- Pagination navigation -->
+    {% if paginator.total_pages > 1 %}
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <!-- Previous page link -->
+            {% if paginator.previous_page %}
+            <li class="page-item">
+                <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">&laquo;</span>
+            </li>
+            {% endif %}
+
+            <!-- Page numbers -->
+            {% if paginator.page_trail %}
+                {% for trail in paginator.page_trail %}
+                <li class="page-item {% if page.url == trail.path %}active{% endif %}">
+                    <a class="page-link" href="{{ trail.path | relative_url }}" title="{{trail.title}}">{{ trail.num }}</a>
+                </li>
+                {% endfor %}
+            {% else %}
+                {% for page in (1..paginator.total_pages) %}
+                {% if page == paginator.page %}
+                <li class="page-item active"><span class="page-link">{{ page }}</span></li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{% if page == 1 %}{{ '/blog/' | relative_url }}{% else %}{{ site.pagination.permalink | replace: ':num', page | prepend: '/blog' | relative_url }}{% endif %}">{{ page }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <!-- Next page link -->
+            {% if paginator.next_page %}
+            <li class="page-item">
+                <a class="page-link" href="{{ paginator.next_page_path | relative_url }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">&raquo;</span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
