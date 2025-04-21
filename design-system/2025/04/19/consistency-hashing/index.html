@@ -23,8 +23,8 @@
 <meta property="og:title" content="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" />
 <meta name="author" content="hoangdd" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó." />
-<meta property="og:description" content="Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó." />
+<meta name="description" content="Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server? Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó." />
+<meta property="og:description" content="Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server? Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó." />
 <link rel="canonical" href="/design-system/2025/04/19/consistency-hashing/" />
 <meta property="og:url" content="/design-system/2025/04/19/consistency-hashing/" />
 <meta property="og:site_name" content="Your awesome title" />
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-04-19T08:40:00+00:00","datePublished":"2025-04-19T08:40:00+00:00","description":"Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.","headline":"Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing","mainEntityOfPage":{"@type":"WebPage","@id":"/design-system/2025/04/19/consistency-hashing/"},"url":"/design-system/2025/04/19/consistency-hashing/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-04-19T08:40:00+00:00","datePublished":"2025-04-19T08:40:00+00:00","description":"Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server? Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.","headline":"Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing","mainEntityOfPage":{"@type":"WebPage","@id":"/design-system/2025/04/19/consistency-hashing/"},"url":"/design-system/2025/04/19/consistency-hashing/"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -86,7 +86,7 @@
     
   </p>
 
-  <p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
+  <p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server? Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
 
 <p>Đầu tiên chúng ta cần phải hiểu consistency hashing là gì?</p>
 
@@ -151,7 +151,7 @@ Ta sẽ lưu được x và y vào s2, z vào s3.</li>
 
 <p>Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server vật lý, tránh tập trung lưu trữ chỉ tại một nơi.</p>
 
-<p>Mỗi server sẽ tạo thành 2 virtual node và hash(virtual_node) như cách làm với node.
+<p>Mỗi server sẽ tạo thành 2 virtual node và hash(virtual_node) như cách làm với server.
 Ta sẽ có:</p>
 <ul>
   <li>hash virtual node của s1
@@ -176,7 +176,7 @@ Ta sẽ có:</p>
   </li>
 </ul>
 
-<p>Sau khi có virtual thì dữ liệu sẽ được phân phối lại như sau:</p>
+<p>Sau khi có virtual node thì dữ liệu sẽ được phân phối lại như sau:</p>
 
 <div style="text-align: center;">
   <img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3" class="img-fluid" />
@@ -203,6 +203,7 @@ Ta sẽ có:</p>
 <p>Để hiểu cách thức triển khai và nắm rõ hơn về cách áp dụng thì các bạn có thể suy nghĩ thêm các câu hỏi mở rộng:</p>
 <ul>
   <li>Khi thêm 1 server mới vào mô hình trên thì các dữ liệu đã được gán vào server cũ sẽ phân phối lại như nào?</li>
+  <li>Từ 1 server vật lý thì tạo ra bao nhiêu virtual node tương ứng là đủ?</li>
 </ul>
 
 <p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing">https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing</a></p>
