@@ -29,3 +29,24 @@ body {
   word-break: break-word; /* Ngắt từ nếu quá dài */
   overflow-wrap: break-word; /* Hỗ trợ trình duyệt hiện đại */
 }
+
+/* Đảm bảo body và html chiếm toàn bộ chiều cao màn hình */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content sẽ chiếm không gian còn lại */
+main {
+  flex: 1;
+}
+
+/* Footer sẽ luôn nằm ở dưới cùng */
+footer {
+  background-color: #343a40; /* Màu nền cho footer */
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}

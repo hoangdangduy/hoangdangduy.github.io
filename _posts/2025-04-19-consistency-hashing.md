@@ -5,7 +5,7 @@ categories: design-system
 author: hoangdd
 ---
 
-Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server?. Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.
+Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server? Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.
 
 Đầu tiên chúng ta cần phải hiểu consistency hashing là gì?
 
@@ -61,10 +61,9 @@ public static Storage getNode(String key) {
 }
 ```
 
-
 Như ví dụ ở trên, chúng ta thấy s1 thì không có dữ liệu nào được lưu trữ vào còn s2 lại lưu cả x và y. Để giải quyết vấn đề này chúng ta sẽ thêm các node ảo của server gọi là virtual node để tăng xác suất lưu trữ đều vào các server vật lý, tránh tập trung lưu trữ chỉ tại một nơi.
 
-Mỗi server sẽ tạo thành 2 virtual node và hash(virtual_node) như cách làm với node.
+Mỗi server sẽ tạo thành 2 virtual node và hash(virtual_node) như cách làm với server.
 Ta sẽ có:
 - hash virtual node của s1
     + hash(s1_v1) = 11
@@ -76,7 +75,7 @@ Ta sẽ có:
 -   + hash(s3_v1) = 26
     + hash(s3_v2) = 31
 
-Sau khi có virtual thì dữ liệu sẽ được phân phối lại như sau:
+Sau khi có virtual node thì dữ liệu sẽ được phân phối lại như sau:
 
 <div style="text-align: center;">
   <img src="/assets/images/consistency-hashing/consitency-hashing-3.png" alt="consitency-hashing-3" class="img-fluid">
@@ -103,5 +102,6 @@ Như vậy với ý tưởng này chúng ta đã giải quyết được cách l
 
 Để hiểu cách thức triển khai và nắm rõ hơn về cách áp dụng thì các bạn có thể suy nghĩ thêm các câu hỏi mở rộng:
 - Khi thêm 1 server mới vào mô hình trên thì các dữ liệu đã được gán vào server cũ sẽ phân phối lại như nào?
+- Từ 1 server vật lý thì tạo ra bao nhiêu virtual node tương ứng là đủ?
 
 Source code tham khảo: [https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing](https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/consistency_hashing)
