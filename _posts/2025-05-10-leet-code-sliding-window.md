@@ -9,13 +9,13 @@ Bài toán: Tìm độ dài xâu con dài nhất không bị trùng lặp
 
 [https://leetcode.com/problems/longest-substring-without-repeating-characters/](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
-Giả sử có string là **abcabccbc**, chúng ta cần phải tìm độ dài của xâu con dài nhất không bị trùng lặp.
+Giả sử có string **s** là **abcabccbc**, chúng ta cần phải tìm độ dài của xâu con dài nhất không bị trùng lặp.
 
 Tiếp cận bài toán này chúng ta có thể áp dụng giải thuật sliding window + hash map với độ phức tạp là O(n) với n là độ dài của string.
 
 Các bước phân tích lời giải bài toán:
 - Cần lưu được độ dài của xâu đang xét nên chúng ta cần biến left và right để xác định xâu con
-- Sử dụng Map để lưu lại vị trí của các ký tự trong xâu
+- Sử dụng map để lưu lại vị trí của các ký tự trong xâu
 - Giá trị độ dài lớn nhất của xâu con
 
 <div class="container-fluid">
@@ -74,11 +74,19 @@ Các bước phân tích lời giải bài toán:
             </thead>
             <tbody>
               <tr>
+                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2"></td>
+              </tr>
+              <tr>
                 <td class="p-1 p-sm-2">1</td>
                 <td class="p-1 p-sm-2">0</td>
                 <td class="p-1 p-sm-2">0</td>
                 <td class="p-1 p-sm-2">a:0</td>
-                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2">1</td>
                 <td class="p-1 p-sm-2">a</td>
               </tr>
               <tr>
@@ -145,14 +153,6 @@ Các bước phân tích lời giải bài toán:
                 <td class="p-1 p-sm-2">2</td>
                 <td class="p-1 p-sm-2">bc</td>
               </tr>
-              <tr>
-                <td class="p-1 p-sm-2">10</td>
-                <td class="p-1 p-sm-2">8</td>
-                <td class="p-1 p-sm-2">9</td>
-                <td class="p-1 p-sm-2"></td>
-                <td class="p-1 p-sm-2"></td>
-                <td class="p-1 p-sm-2"></td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -161,20 +161,19 @@ Các bước phân tích lời giải bài toán:
   </div>
 
 Giải thuật:
-- loop: right chạy từ 0 -> length của xâu s
-  - check s[right] có trong map
-    - có: 
-      - left = map[s[right]] + 1
-      - length = right - map[s[right]]
-    - không: 
+- loop: right chạy từ 0 -> s.length
+  - check s[right] có trong map và map chứa s[right] >= left (tức là s[right] đang nằm trong xâu con đang xét s[left:right])
+    - đúng: 
+      - left = map[s[right]] + 1 để tiếp tục xét từ vị trí tiếp theo của s[right] trong map
+      - length = right - map[s[right]] cập nhật lại length của s[left:right]
+    - sai: 
       - length = right - left + 1
-  - cập nhật s[right] vào map
+  - cập nhật s[right] với vị trí right vào map
   - right tăng lên 1
 
 Triển khai giải thuật trên ta có được code như sau:
-### Example code:
 ```java
-public int lengthOfLongestSubstringOld(String s) {
+public int lengthOfLongestSubstring(String s) {
     int left = 0;
     int right = 0;
     int max = 0;
@@ -198,7 +197,6 @@ public int lengthOfLongestSubstringOld(String s) {
 ```
 
 Tối ưu để clean code
-### Example code:
 ```java
 public int lengthOfLongestSubstring(String s) {
     int left = 0;
@@ -208,7 +206,7 @@ public int lengthOfLongestSubstring(String s) {
 
     while (right < s.length()) {
         char c = s.charAt(right);
-        if (map.containsKey(c) && map.get(c) >= left) {
+        if (map.getOrDefault(c, -1) >= left) {
             left = map.get(c) + 1;
         }
         map.put(c, right);
@@ -218,3 +216,6 @@ public int lengthOfLongestSubstring(String s) {
     return max;
 }
 ```
+Khi đến đây bạn đã giải quyết được bài toán rồi.
+
+Hãy giải quyết thêm các bài toán khác để nâng cao kỹ năng thuật toán nhé.
