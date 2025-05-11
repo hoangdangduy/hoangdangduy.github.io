@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-11T11:10:34+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp</title><link href="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/" rel="alternate" type="text/html" title="Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp" /><published>2025-05-10T14:16:00+00:00</published><updated>2025-05-10T14:16:00+00:00</updated><id>/leet-code/algorithm/2025/05/10/leet-code-sliding-window</id><content type="html" xml:base="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/"><![CDATA[<p>Bài toán: Tìm độ dài xâu con dài nhất không bị trùng lặp</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-11T16:52:36+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp</title><link href="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/" rel="alternate" type="text/html" title="Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp" /><published>2025-05-10T14:16:00+00:00</published><updated>2025-05-10T14:16:00+00:00</updated><id>/leet-code/algorithm/2025/05/10/leet-code-sliding-window</id><content type="html" xml:base="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/"><![CDATA[<p>Bài toán: Tìm độ dài xâu con dài nhất không bị trùng lặp</p>
 
 <p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">https://leetcode.com/problems/longest-substring-without-repeating-characters/</a></p>
 
-<p>Giả sử có string là <strong>abcabccbc</strong>, chúng ta cần phải tìm độ dài của xâu con dài nhất không bị trùng lặp.</p>
+<p>Giả sử có string <strong>s</strong> là <strong>abcabccbc</strong>, chúng ta cần phải tìm độ dài của xâu con dài nhất không bị trùng lặp.</p>
 
 <p>Tiếp cận bài toán này chúng ta có thể áp dụng giải thuật sliding window + hash map với độ phức tạp là O(n) với n là độ dài của string.</p>
 
 <p>Các bước phân tích lời giải bài toán:</p>
 <ul>
   <li>Cần lưu được độ dài của xâu đang xét nên chúng ta cần biến left và right để xác định xâu con</li>
-  <li>Sử dụng Map để lưu lại vị trí của các ký tự trong xâu</li>
+  <li>Sử dụng map để lưu lại vị trí của các ký tự trong xâu</li>
   <li>Giá trị độ dài lớn nhất của xâu con</li>
 </ul>
 
@@ -69,11 +69,19 @@
             </thead>
             <tbody>
               <tr>
+                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2"></td>
+              </tr>
+              <tr>
                 <td class="p-1 p-sm-2">1</td>
                 <td class="p-1 p-sm-2">0</td>
                 <td class="p-1 p-sm-2">0</td>
                 <td class="p-1 p-sm-2">a:0</td>
-                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2">1</td>
                 <td class="p-1 p-sm-2">a</td>
               </tr>
               <tr>
@@ -140,14 +148,6 @@
                 <td class="p-1 p-sm-2">2</td>
                 <td class="p-1 p-sm-2">bc</td>
               </tr>
-              <tr>
-                <td class="p-1 p-sm-2">10</td>
-                <td class="p-1 p-sm-2">8</td>
-                <td class="p-1 p-sm-2">9</td>
-                <td class="p-1 p-sm-2"></td>
-                <td class="p-1 p-sm-2"></td>
-                <td class="p-1 p-sm-2"></td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -157,32 +157,31 @@
 
 <p>Giải thuật:</p>
 <ul>
-  <li>loop: right chạy từ 0 -&gt; length của xâu s
+  <li>loop: right chạy từ 0 -&gt; s.length
     <ul>
-      <li>check s[right] có trong map
+      <li>check s[right] có trong map và map chứa s[right] &gt;= left (tức là s[right] đang nằm trong xâu con đang xét s[left:right])
         <ul>
-          <li>có:
+          <li>đúng:
             <ul>
-              <li>left = map[s[right]] + 1</li>
-              <li>length = right - map[s[right]]</li>
+              <li>left = map[s[right]] + 1 để tiếp tục xét từ vị trí tiếp theo của s[right] trong map</li>
+              <li>length = right - map[s[right]] cập nhật lại length của s[left:right]</li>
             </ul>
           </li>
-          <li>không:
+          <li>sai:
             <ul>
               <li>length = right - left + 1</li>
             </ul>
           </li>
         </ul>
       </li>
-      <li>cập nhật s[right] vào map</li>
+      <li>cập nhật s[right] với vị trí right vào map</li>
       <li>right tăng lên 1</li>
     </ul>
   </li>
 </ul>
 
 <p>Triển khai giải thuật trên ta có được code như sau:</p>
-<h3 id="example-code">Example code:</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstringOld</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
@@ -206,7 +205,6 @@
 </code></pre></div></div>
 
 <p>Tối ưu để clean code</p>
-<h3 id="example-code-1">Example code:</h3>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
@@ -215,7 +213,7 @@
 
     <span class="k">while</span> <span class="o">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">{</span>
         <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="n">left</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="n">left</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">left</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
         <span class="o">}</span>
         <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
@@ -224,7 +222,10 @@
     <span class="o">}</span>
     <span class="k">return</span> <span class="n">max</span><span class="o">;</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Tìm độ dài xâu con dài nhất không bị trùng lặp]]></summary></entry><entry><title type="html">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title><link href="/design-system/2025/04/19/consistency-hashing/" rel="alternate" type="text/html" title="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" /><published>2025-04-19T08:40:00+00:00</published><updated>2025-04-19T08:40:00+00:00</updated><id>/design-system/2025/04/19/consistency-hashing</id><content type="html" xml:base="/design-system/2025/04/19/consistency-hashing/"><![CDATA[<p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server? Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
+</code></pre></div></div>
+<p>Khi đến đây bạn đã giải quyết được bài toán rồi.</p>
+
+<p>Hãy giải quyết thêm các bài toán khác để nâng cao kỹ năng thuật toán nhé.</p>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Tìm độ dài xâu con dài nhất không bị trùng lặp]]></summary></entry><entry><title type="html">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</title><link href="/design-system/2025/04/19/consistency-hashing/" rel="alternate" type="text/html" title="Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing" /><published>2025-04-19T08:40:00+00:00</published><updated>2025-04-19T08:40:00+00:00</updated><id>/design-system/2025/04/19/consistency-hashing</id><content type="html" xml:base="/design-system/2025/04/19/consistency-hashing/"><![CDATA[<p>Việc lưu trữ dữ liệu dạng single server hay còn gọi monolitic là một cách tiếp cận đơn giản và dễ dàng để triển khai. Tuy nhiên, khi dữ liệu ngày càng lớn, việc mở rộng quy mô trở thành một thách thức lớn, vậy làm sao để làm giảm công việc chỉnh sửa lại vị trí lưu dữ liệu khi tăng/giảm số server? Để giải quyết vấn đề này, chúng ta cần một cách tiếp cận phân tán hơn, cho phép chúng ta mở rộng quy mô mà không làm giảm hiệu suất. Do đó, consistency hashing là một trong nhiều cách tiếp cận để giải quyết bài toán đó.</p>
 
 <p>Đầu tiên chúng ta cần phải hiểu consistency hashing là gì?</p>
 

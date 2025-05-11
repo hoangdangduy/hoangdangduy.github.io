@@ -92,14 +92,14 @@
 
 <p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">https://leetcode.com/problems/longest-substring-without-repeating-characters/</a></p>
 
-<p>Giả sử có string là <strong>abcabccbc</strong>, chúng ta cần phải tìm độ dài của xâu con dài nhất không bị trùng lặp.</p>
+<p>Giả sử có string <strong>s</strong> là <strong>abcabccbc</strong>, chúng ta cần phải tìm độ dài của xâu con dài nhất không bị trùng lặp.</p>
 
 <p>Tiếp cận bài toán này chúng ta có thể áp dụng giải thuật sliding window + hash map với độ phức tạp là O(n) với n là độ dài của string.</p>
 
 <p>Các bước phân tích lời giải bài toán:</p>
 <ul>
   <li>Cần lưu được độ dài của xâu đang xét nên chúng ta cần biến left và right để xác định xâu con</li>
-  <li>Sử dụng Map để lưu lại vị trí của các ký tự trong xâu</li>
+  <li>Sử dụng map để lưu lại vị trí của các ký tự trong xâu</li>
   <li>Giá trị độ dài lớn nhất của xâu con</li>
 </ul>
 
@@ -159,11 +159,19 @@
             </thead>
             <tbody>
               <tr>
+                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2"></td>
+                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2"></td>
+              </tr>
+              <tr>
                 <td class="p-1 p-sm-2">1</td>
                 <td class="p-1 p-sm-2">0</td>
                 <td class="p-1 p-sm-2">0</td>
                 <td class="p-1 p-sm-2">a:0</td>
-                <td class="p-1 p-sm-2">0</td>
+                <td class="p-1 p-sm-2">1</td>
                 <td class="p-1 p-sm-2">a</td>
               </tr>
               <tr>
@@ -230,14 +238,6 @@
                 <td class="p-1 p-sm-2">2</td>
                 <td class="p-1 p-sm-2">bc</td>
               </tr>
-              <tr>
-                <td class="p-1 p-sm-2">10</td>
-                <td class="p-1 p-sm-2">8</td>
-                <td class="p-1 p-sm-2">9</td>
-                <td class="p-1 p-sm-2"></td>
-                <td class="p-1 p-sm-2"></td>
-                <td class="p-1 p-sm-2"></td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -247,32 +247,31 @@
 
 <p>Giải thuật:</p>
 <ul>
-  <li>loop: right chạy từ 0 -&gt; length của xâu s
+  <li>loop: right chạy từ 0 -&gt; s.length
     <ul>
-      <li>check s[right] có trong map
+      <li>check s[right] có trong map và map chứa s[right] &gt;= left (tức là s[right] đang nằm trong xâu con đang xét s[left:right])
         <ul>
-          <li>có:
+          <li>đúng:
             <ul>
-              <li>left = map[s[right]] + 1</li>
-              <li>length = right - map[s[right]]</li>
+              <li>left = map[s[right]] + 1 để tiếp tục xét từ vị trí tiếp theo của s[right] trong map</li>
+              <li>length = right - map[s[right]] cập nhật lại length của s[left:right]</li>
             </ul>
           </li>
-          <li>không:
+          <li>sai:
             <ul>
               <li>length = right - left + 1</li>
             </ul>
           </li>
         </ul>
       </li>
-      <li>cập nhật s[right] vào map</li>
+      <li>cập nhật s[right] với vị trí right vào map</li>
       <li>right tăng lên 1</li>
     </ul>
   </li>
 </ul>
 
 <p>Triển khai giải thuật trên ta có được code như sau:</p>
-<h3 id="example-code">Example code:</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstringOld</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
@@ -296,7 +295,6 @@
 </code></pre></div></div>
 
 <p>Tối ưu để clean code</p>
-<h3 id="example-code-1">Example code:</h3>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
@@ -305,7 +303,7 @@
 
     <span class="k">while</span> <span class="o">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">{</span>
         <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="n">left</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="n">left</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">left</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
         <span class="o">}</span>
         <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
@@ -315,6 +313,9 @@
     <span class="k">return</span> <span class="n">max</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
+<p>Khi đến đây bạn đã giải quyết được bài toán rồi.</p>
+
+<p>Hãy giải quyết thêm các bài toán khác để nâng cao kỹ năng thuật toán nhé.</p>
 
 </div>
         </div>
