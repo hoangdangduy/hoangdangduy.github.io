@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic meta tags for character set and responsive design -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page title from Jekyll front matter -->
+    <title>Linked list</title>
+
+    <!-- External stylesheets: Bootstrap CSS framework and Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS file from your Jekyll project -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <!-- Jekyll plugins for RSS feed and SEO optimization -->
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Your awesome title" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Linked list | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Linked list" />
+<meta name="author" content="hoangdd" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Đặt câu hỏi: Linked list là già? Trả lời: Linked list là cấu trúc dữ liệu mô tả tính liên kết của phần tử thông qua vị trí tham chiếu trên bộ nhớ giúp cho việc thêm/xoá phần tử rất linh hoạt mà không tốn thêm nhiều bộ nhớ." />
+<meta property="og:description" content="Đặt câu hỏi: Linked list là già? Trả lời: Linked list là cấu trúc dữ liệu mô tả tính liên kết của phần tử thông qua vị trí tham chiếu trên bộ nhớ giúp cho việc thêm/xoá phần tử rất linh hoạt mà không tốn thêm nhiều bộ nhớ." />
+<link rel="canonical" href="/data-structure/2025/05/10/linked-list/" />
+<meta property="og:url" content="/data-structure/2025/05/10/linked-list/" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-10T14:16:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Linked list" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-05-10T14:16:00+00:00","datePublished":"2025-05-10T14:16:00+00:00","description":"Đặt câu hỏi: Linked list là già? Trả lời: Linked list là cấu trúc dữ liệu mô tả tính liên kết của phần tử thông qua vị trí tham chiếu trên bộ nhớ giúp cho việc thêm/xoá phần tử rất linh hoạt mà không tốn thêm nhiều bộ nhớ.","headline":"Linked list","mainEntityOfPage":{"@type":"WebPage","@id":"/data-structure/2025/05/10/linked-list/"},"url":"/data-structure/2025/05/10/linked-list/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body class="bg-light">
+    <!-- Header section with navigation menu -->
+    <header class="bg-white shadow-sm mb-4">
+      <div class="container">
+        <!-- Include navigation.html from _includes directory -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="container pb-5">
+      <div class="row">
+        <!-- Main content column (8/12 width on medium screens and above) -->
+        <div class="col-md-8 mb-4">
+          <div class="bg-white p-4 rounded shadow-sm">
+  <h1>Linked list</h1>
+
+  <p class="text-muted mb-3">
+    <i class="bi bi-calendar-event"></i> May 10, 2025
+
+    
+    
+    • <i class="bi bi-person"></i> <a href="/authors/hoangdd/">hoangdd</a>
+    
+
+     •
+      <span class="categories">
+        <i class="bi bi-tags"></i>
+        
+          <span class="badge bg-secondary">data-structure</span>
+        
+      </span>
+    
+  </p>
+
+  <ol>
+  <li>
+    <p>Đặt câu hỏi: Linked list là già?
+Trả lời: Linked list là cấu trúc dữ liệu mô tả tính liên kết của phần tử thông qua vị trí tham chiếu trên bộ nhớ giúp cho việc thêm/xoá phần tử rất linh hoạt mà không tốn thêm nhiều bộ nhớ.</p>
+  </li>
+  <li>
+    <p>Có 2 loại linked list:</p>
+    <ul>
+      <li>Liên kết đơn (singly linked list): mỗi node sẽ có 1 con trỏ đến node tiếp theo</li>
+    </ul>
+  </li>
+</ol>
+<div style="text-align: center;">
+  <img src="/assets/images/linked-list/single-linked-list.png" alt="single-linked-list" class="img-fluid" />
+  <p class="text-muted">Hình 1: Liên kết đơn</p>
+</div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedList</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">key</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LinkedList</span> <span class="n">next</span><span class="o">;</span>
+
+    <span class="c1">// ignore getter and setter, constructor</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Liên kết đôi (doubly linked list): mỗi node sẽ có 2 con trỏ đến node trước và node sau</li>
+</ul>
+<div style="text-align: center;">
+  <img src="/assets/images/linked-list/double-linked-list.png" alt="double-linked-list" class="img-fluid" />
+  <p class="text-muted">Hình 2: Liên kết đôi</p>
+</div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedList</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">key</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LinkedList</span> <span class="n">next</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LinkedList</span> <span class="n">prev</span><span class="o">;</span>
+
+    <span class="c1">// ignore getter and setter, constructor</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Ưu điểm:</p>
+<ul>
+  <li>Không tốn bộ nhớ cho việc liên kết giữa các node như dùng mảng bởi vì nó chỉ dùng bộ nhớ để lưu con trỏ, còn mảng thì dùng bộ nhớ để lưu cả mảng.</li>
+  <li>Độ phức tạp O(1) cho việc thêm vào và O(n) cho việc tìm kiếm</li>
+</ul>
+
+<p>Nhược điểm:</p>
+<ul>
+  <li>Không truy cập nhanh đến các node, phải duyệt lần lượt với độ phức tạp là O(n)</li>
+</ul>
+
+<ol>
+  <li>Các dạng bài toán áp dụng được linked list:</li>
+</ol>
+
+<p>3.1. Triển khi stack <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Book/Introduction_To_Algorithms/src/_10_2_2">[Tham khảo source code]</a></p>
+<div style="text-align: center;">
+  <img src="/assets/images/linked-list/stack.png" alt="stack" class="img-fluid" />
+  <p class="text-muted">Hình 3: Stack</p>
+</div>
+<ul>
+  <li>Con trỏ head luôn ở đầu bất kể phần tử nào được thêm mới vào. Mỗi phân từ sau được thêm vào sẽ luôn là head và trỏ đến phần tử vào trước nó (phần tử tiếp theo)</li>
+</ul>
+
+<p>3.2. Triển khai queue <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Book/Introduction_To_Algorithms/src/_10_2_3">[Tham khảo source code]</a></p>
+<div style="text-align: center;">
+  <img src="/assets/images/linked-list/queue.png" alt="queue" class="img-fluid" />
+  <p class="text-muted">Hình 4: Queue</p>
+</div>
+<ul>
+  <li>Con trỏ head và tail luôn ở 2 đầu để queue lấy được ở cả 2 đầu</li>
+</ul>
+
+<p>3.3. Triển khai doubly linked list bằng toán tử XOR <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Book/Introduction_To_Algorithms/src/_10_2_6">[Tham khảo source code]</a></p>
+
+<p>3.4. Các bài toán tham khảo khác:</p>
+<ul>
+  <li><a href="https://leetcode.com/problems/add-two-numbers/description/">Leet code: Add Two Numbers</a>
+    <ul>
+      <li><a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_2_Add_Two_Number">Đáp án</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</div>
+        </div>
+
+        <!-- Sidebar column (4/12 width on medium screens and above) -->
+<div class="col-md-4">
+  <!-- Recent Posts widget -->
+  <div class="bg-white p-4 rounded shadow-sm mb-4">
+    <h4 class="mb-3">Recent Posts</h4>
+    <ul class="list-unstyled">
+      <!-- Loop through 5 most recent posts -->
+      
+        <li class="mb-2">
+          <a href="/data-structure/2025/05/10/linked-list/" class="text-decoration-none">Linked list</a>
+          <small class="text-muted d-block">May 10, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/" class="text-decoration-none">Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp</a>
+          <small class="text-muted d-block">May 10, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/design-system/2025/04/19/consistency-hashing/" class="text-decoration-none">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</a>
+          <small class="text-muted d-block">Apr 19, 2025</small>
+        </li>
+      
+    </ul>
+  </div>
+
+  <!-- Categories widget -->
+  <div class="bg-white p-4 rounded shadow-sm">
+    <h4 class="mb-3">Categories</h4>
+    <div class="categories">
+      <!-- Loop through all categories -->
+      
+        <a href="/category/design-system" class="badge bg-primary text-decoration-none mb-1">
+          design-system (1)
+        </a>
+      
+        <a href="/category/leet-code" class="badge bg-primary text-decoration-none mb-1">
+          leet-code (1)
+        </a>
+      
+        <a href="/category/algorithm" class="badge bg-primary text-decoration-none mb-1">
+          algorithm (1)
+        </a>
+      
+        <a href="/category/data-structure" class="badge bg-primary text-decoration-none mb-1">
+          data-structure (1)
+        </a>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- About section -->
+          <div class="col-md-6">
+            <h5>About My Blog</h5>
+            <p>My blog write about design system, design pattern, algorithm and anything I like and things so people want to know.</p>
+          </div>
+
+          <!-- Contact information section -->
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-envelope"></i> dangduyhoang3009@gmail.com</li>
+              <li><i class="bi bi-github"></i> <a href="https://github.com/hoangdangduy" class="text-white">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright information -->
+        <div class="text-center mt-4">
+          <p>&copy; My blog start from 2025. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript bundle for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

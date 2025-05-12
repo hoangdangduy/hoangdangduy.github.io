@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/authors/hoangdd/</loc>
-<lastmod>2025-05-11T16:52:36+00:00</lastmod>
+<lastmod>2025-05-12T17:12:49+00:00</lastmod>
 </url>
 <url>
 <loc>/design-system/2025/04/19/consistency-hashing/</loc>
@@ -10,6 +10,10 @@
 </url>
 <url>
 <loc>/leet-code/algorithm/2025/05/10/leet-code-sliding-window/</loc>
+<lastmod>2025-05-10T14:16:00+00:00</lastmod>
+</url>
+<url>
+<loc>/data-structure/2025/05/10/linked-list/</loc>
 <lastmod>2025-05-10T14:16:00+00:00</lastmod>
 </url>
 <url>
@@ -26,5 +30,8 @@
 </url>
 <url>
 <loc>/category/algorithm/</loc>
+</url>
+<url>
+<loc>/category/data-structure/</loc>
 </url>
 </urlset>
