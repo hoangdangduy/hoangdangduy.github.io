@@ -4,7 +4,7 @@ date:   2025-05-10 21:16:00 +0700
 categories: data-structure
 author: hoangdd
 ---
-1. Đặt câu hỏi: Linked list là già?
+1. Đặt câu hỏi: Linked list là gì?
 Trả lời: Linked list là cấu trúc dữ liệu mô tả tính liên kết của phần tử thông qua vị trí tham chiếu trên bộ nhớ giúp cho việc thêm/xoá phần tử rất linh hoạt mà không tốn thêm nhiều bộ nhớ.
 
 2. Có 2 loại linked list:
