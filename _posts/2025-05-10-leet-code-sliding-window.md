@@ -20,7 +20,7 @@ Các bước phân tích lời giải bài toán:
 
 <div class="container-fluid">
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-md-12 col-lg-6">
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
@@ -59,7 +59,7 @@ Các bước phân tích lời giải bài toán:
 
 <div class="container-fluid">
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-md-12 col-lg-6">
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>

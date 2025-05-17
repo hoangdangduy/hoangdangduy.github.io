@@ -53,7 +53,7 @@ giả sử ta có mảng
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-8">
+    <div class="col-md-12 col-lg-10">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
@@ -142,7 +142,7 @@ Nếu chưa tìm được vị trí chia mảng thì quay lại bước [A] đ�
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-10">
+    <div class="col-md-12 col-lg-10">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
