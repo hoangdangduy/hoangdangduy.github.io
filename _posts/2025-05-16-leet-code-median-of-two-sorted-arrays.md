@@ -51,10 +51,53 @@ Vì 2 mảng này đã được sắp xếp rồi thì có thể áp dụng hư�
 
 giả sử ta có mảng
 
-| index | 0 | 1 | 2 | 3 | 4 | 5 | 6  | 7  |
-|-------|---|---|---|---|---|---|----|----|
-| s1    | 1 | 3 | 5 | 6 | 7 | 9 |    |    |
-| s2    | 2 | 3 | 4 | 4 | 4 | 8 | 10 | 12 |
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2">index</th>
+              <th class="p-1 p-sm-2">0</th>
+              <th class="p-1 p-sm-2">1</th>
+              <th class="p-1 p-sm-2">2</th>
+              <th class="p-1 p-sm-2">3</th>
+              <th class="p-1 p-sm-2">4</th>
+              <th class="p-1 p-sm-2">5</th>
+              <th class="p-1 p-sm-2">6</th>
+              <th class="p-1 p-sm-2">7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">s1</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">5</td>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">7</td>
+              <td class="p-1 p-sm-2">9</td>
+              <td class="p-1 p-sm-2"></td>
+              <td class="p-1 p-sm-2"></td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">s2</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">8</td>
+              <td class="p-1 p-sm-2">10</td>
+              <td class="p-1 p-sm-2">12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 Ta sẽ chia mảng s1 thành 2 phần với index vị trí giữa là partition1, mảng s2 thành 2 phần với index vị trí giữa là partition2.
 
@@ -97,11 +140,56 @@ Nếu chưa tìm được vị trí chia mảng thì quay lại bước [A] đ�
 
 Áp dụng vào ví dụ trên ta có bảng các bước chi tiết như sau:
 
-| **step** | **low** | **high** | **partition1** | **partition2** | **left s1 ___ right s1**    | **left s2 ___ right s2**           |
-|----------|---------|----------|----------------|----------------|---------------------------|---------------------------------|
-| 1        | 0       | 6        | 3              | 4              | 1, 3, 5   ___   6, 7, 9   | 2, 3, 4, 4    ___   4, 8, 10, 12 |
-| 2        | 0       | 2        | 1              | 6              | 1    ___   3, 5, 6, 7, 9  | 2, 3, 4, 4, 4, 8    ___   10, 12 |
-| 3        | 2       | 2        | 2              | 5              | 1, 3    ___    5, 6, 7, 9 | 2, 3, 4, 4, 4    ___   8, 10, 12 |
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-10">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2"><b>step</b></th>
+              <th class="p-1 p-sm-2"><b>low</b></th>
+              <th class="p-1 p-sm-2"><b>high</b></th>
+              <th class="p-1 p-sm-2"><b>partition1</b></th>
+              <th class="p-1 p-sm-2"><b>partition2</b></th>
+              <th class="p-1 p-sm-2"><b>left s1 ___ right s1</b></th>
+              <th class="p-1 p-sm-2"><b>left s2 ___ right s2</b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">1, 3, 5 ___ 6, 7, 9</td>
+              <td class="p-1 p-sm-2">2, 3, 4, 4 ___ 4, 8, 10, 12</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">1 ___ 3, 5, 6, 7, 9</td>
+              <td class="p-1 p-sm-2">2, 3, 4, 4, 4, 8 ___ 10, 12</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">5</td>
+              <td class="p-1 p-sm-2">1, 3 ___ 5, 6, 7, 9</td>
+              <td class="p-1 p-sm-2">2, 3, 4, 4, 4 ___ 8, 10, 12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 Từ các phân tích trên ta có đoạn code cụ thể như sau:
 
@@ -141,4 +229,4 @@ Từ các phân tích trên ta có đoạn code cụ thể như sau:
 
 Vì áp dụng giải thuật binary search nên độ phức tạp chỉ là O(log(min(n,m))).
 
-Source code tham khảo: https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_4_Median_of_Two_Sorted_Arrays
+Source code tham khảo: [https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_4_Median_of_Two_Sorted_Arrays](https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_4_Median_of_Two_Sorted_Arrays/)
