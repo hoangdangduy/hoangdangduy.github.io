@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic meta tags for character set and responsive design -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page title from Jekyll front matter -->
+    <title>Leet code: Tính trung vị của 2 mảng đã được sắp xếp</title>
+
+    <!-- External stylesheets: Bootstrap CSS framework and Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS file from your Jekyll project -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <!-- Jekyll plugins for RSS feed and SEO optimization -->
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Your awesome title" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Leet code: Tính trung vị của 2 mảng đã được sắp xếp | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Leet code: Tính trung vị của 2 mảng đã được sắp xếp" />
+<meta name="author" content="hoangdd" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp" />
+<meta property="og:description" content="Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp" />
+<link rel="canonical" href="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/" />
+<meta property="og:url" content="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-16T17:29:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Leet code: Tính trung vị của 2 mảng đã được sắp xếp" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-05-16T17:29:00+00:00","datePublished":"2025-05-16T17:29:00+00:00","description":"Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp","headline":"Leet code: Tính trung vị của 2 mảng đã được sắp xếp","mainEntityOfPage":{"@type":"WebPage","@id":"/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/"},"url":"/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body class="bg-light">
+    <!-- Header section with navigation menu -->
+    <header class="bg-white shadow-sm mb-4">
+      <div class="container">
+        <!-- Include navigation.html from _includes directory -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="container pb-5">
+      <div class="row">
+        <!-- Main content column (8/12 width on medium screens and above) -->
+        <div class="col-md-8 mb-4">
+          <div class="bg-white p-4 rounded shadow-sm">
+  <h1>Leet code: Tính trung vị của 2 mảng đã được sắp xếp</h1>
+
+  <p class="text-muted mb-3">
+    <i class="bi bi-calendar-event"></i> May 16, 2025
+
+    
+    
+    • <i class="bi bi-person"></i> <a href="/authors/hoangdd/">hoangdd</a>
+    
+
+     •
+      <span class="categories">
+        <i class="bi bi-tags"></i>
+        
+          <span class="badge bg-secondary">leet-code</span>
+        
+          <span class="badge bg-secondary">algorithm</span>
+        
+      </span>
+    
+  </p>
+
+  <p>Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp</p>
+
+<p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
+
+<ol>
+  <li>Tiếp cận bài toán hướng đơn giản</li>
+</ol>
+
+<p>Vì 2 mảng đã sắp xếp nên chúng ta có thể duyệt 2 mảng lần lượt từ trái qua phải hoặc từ phải qua trái, sau đó so sánh từng giá trị với nhau và lưu lại vào mảng mới.</p>
+
+<p>Khi có mảng mới, nếu:</p>
+<ul>
+  <li>mảng có lẻ phần tử thì lấy s3.length/2 là giá trị cần tìm.</li>
+  <li>mảng có chẵn phần tử thì lấy ((s3.length/2 - 1) + s3.length/2) / 2 là giá trị cần tìm.
+```
+i = s1.length - 1
+j = s2.length - 1</li>
+</ul>
+
+<p>s3 = [s1.length + s2.length]
+k = s3.length</p>
+
+<p>while (i &gt;= 0 &amp;&amp; j &gt;= 0) {
+    if (s1[i] &gt; s2[j]) {
+        s3[k] = s1[i];
+        i–;
+    } else {
+        s3[k] = s1[j];
+        j–;
+    }
+}</p>
+
+<p>double result;
+if (s3.length % 2 == 0) {
+    result = (s3[s3.length/2 - 1] = s3[s3.length/2]) / 2;
+} else {
+    result = s3[s3.length/2];
+}</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Với đoạn code trên ta có thể thấy i chạy từ 0 -&gt; s1.length, j chạy từ 0 -&gt; s2.length tức là độ phức tạp của thuật toán là O(max(n,m)) với n là độ dài của mảng s1 và m là độ dài của mảng s2.
+
+2. Tiếp cận bài toán hướng tối ưu
+
+Vì 2 mảng này đã được sắp xếp rồi thì có thể áp dụng hướng tiếp cận binary search để chia mảng là 2 phần.
+
+giả sử ta có mảng
+
+| index | 0 | 1 | 2 | 3 | 4 | 5 | 6  | 7  |
+|-------|---|---|---|---|---|---|----|----|
+| s1    | 1 | 3 | 5 | 6 | 7 | 9 |    |    |
+| s2    | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 |
+
+Ta sẽ chia mảng s1 thành 2 phần với index vị trí giữa là partition1, mảng s2 thành 2 phân với index vị trí giữa là partition2.
+
+Tạo sẵn biến:
+- `low = 0`
+- `high = s1.length`
+
+[A] Ta sẽ lấy:
+- `partition1 = (low + high) / 2` để chia mảng s1 thành 2 phần
+  + partition1 = (0 + 6) / 2 = 3
+- `partition2 = (s1.length + s2.length + 1) / 2 - partition1` để chia mảng s2 thành 2 phần
+  + partition2 = (6 + 8 + 1) / 2 - 4 = 3
+  + Giải thích: ý tưởng là sẽ chia mảng `s1 ∪ s2` nên ở s1 đã lấy số lượng partition1 phần tử thì ở s2 lấy một nửa của `s1 ∪ s2` trừ đi số lượng partition1
+
+Khi tìm được partition1 và partition2 ta sẽ kiểm tra giá trị của nó và lân cận nó so với vị trí ở mảng còn lại đã thoả mã 2 vị trí ở chính giữa chưa.
+
+coi:
+- `maxLeft1 = s1[partition1 - 1] = s[3-1] = 5` là giá trị lớn nhất bên trái của partition1
+  + mảng bên trái của s1: [1, 3, 5]
+- `minRight1 = s1[partition1] = s[3] = 6` là giá trị nhỏ nhất bên phải của partition1
+  + mảng bên phải của s1: [6, 7, 9]
+- `maxLeft2 = s2[partition2 - 1] = s[3-1] = s[2] = 4` là giá trị lớn nhất bên trái của partition2
+  + mảng bên trái của s2: [2, 3, 4]
+- `minRight2 = s2[partition2] = s[3] = 5` là giá trị nhỏ nhất bên phải của partition2
+  + mảng bên phải của s2: [5, 6, 8, 10, 12]
+
+nếu:
+- `maxLeft1 &lt;= minRight2 &amp;&amp; maxLeft2 &lt;= minRight1` thì ta đã tìm được vị trí chia
+- `maxLeft1 &gt; minRight2` tức là bên trái đang nhiều phần tử hơn, cần giảm partition1
+  + set `high = partition1 - 1`
+- `maxLeft2 &gt; minRight1` tức là bên phải đang nhiều phần tử hơn, cần tăng partition1
+  + set `low = partition1 + 1`
+
+Nếu chưa tìm được vị trí chia thì quay lại bước [A] để tìm lại partition1 và partition2, ngược lại nhảy đến bước [B]
+
+[B] Tính giá trị trung vị
+- Nếu số phần tử lẻ thì trả về max(maxLeft1, maxLeft2)
+- Nếu số phần tử chẵn thì trả về (max(maxLeft1, maxLeft2) + min(minRight1, minRight2)) / 2
+
+```java
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length &lt; nums2.length) {
+            return findMedianSortedArrays(nums1, nums2, 0, nums1.length);
+        } else {
+            return findMedianSortedArrays(nums2, nums1, 0, nums2.length);
+        }
+    }
+
+    public double findMedianSortedArrays(int[] s1, int[] s2, int low, int high) {
+        int partition1 = (low + high)/2;
+        int partition2 = (s1.length + s2.length + 1)/2 - partition1;
+
+        int maxLeft1 = partition1 == 0 ? maxLeft1 = Integer.MIN_VALUE : s1[partition1-1];
+        int minRight1 = partition1 &lt; s1.length ? s1[partition1] : Integer.MAX_VALUE;
+        int maxLeft2 = partition2 == 0 ? Integer.MIN_VALUE : s2[partition2-1];
+        int minRight2 = partition2 &lt; s2.length ? s2[partition2] : Integer.MAX_VALUE;
+
+        if (maxLeft1 &gt; minRight2) {
+            high = partition1 - 1;
+            return findMedianSortedArrays(s1, s2, low, high);
+        } else if (maxLeft2 &gt; minRight1) {
+            low = partition1 + 1;
+            return findMedianSortedArrays(s1, s2, low, high);
+        } else {
+            if ((s1.length + s2.length) % 2 != 0) {
+                return Math.max(maxLeft1, maxLeft2);
+            } else {
+                return (double) (Math.max(maxLeft1, maxLeft2) + Math.min(minRight1, minRight2)) / 2;
+            }
+        }
+    }
+</code></pre></div></div>
+
+<p>Vì áp dụng giải thuật binary search nên độ phức tạp chỉ là O(log(min(n,m))).</p>
+
+</div>
+        </div>
+
+        <!-- Sidebar column (4/12 width on medium screens and above) -->
+<div class="col-md-4">
+  <!-- Recent Posts widget -->
+  <div class="bg-white p-4 rounded shadow-sm mb-4">
+    <h4 class="mb-3">Recent Posts</h4>
+    <ul class="list-unstyled">
+      <!-- Loop through 5 most recent posts -->
+      
+        <li class="mb-2">
+          <a href="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/" class="text-decoration-none">Leet code: Tính trung vị của 2 mảng đã được sắp xếp</a>
+          <small class="text-muted d-block">May 16, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/data-structure/2025/05/10/linked-list/" class="text-decoration-none">Linked list</a>
+          <small class="text-muted d-block">May 10, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/" class="text-decoration-none">Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp</a>
+          <small class="text-muted d-block">May 10, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/design-system/2025/04/19/consistency-hashing/" class="text-decoration-none">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</a>
+          <small class="text-muted d-block">Apr 19, 2025</small>
+        </li>
+      
+    </ul>
+  </div>
+
+  <!-- Categories widget -->
+  <div class="bg-white p-4 rounded shadow-sm">
+    <h4 class="mb-3">Categories</h4>
+    <div class="categories">
+      <!-- Loop through all categories -->
+      
+        <a href="/category/design-system" class="badge bg-primary text-decoration-none mb-1">
+          design-system (1)
+        </a>
+      
+        <a href="/category/leet-code" class="badge bg-primary text-decoration-none mb-1">
+          leet-code (2)
+        </a>
+      
+        <a href="/category/algorithm" class="badge bg-primary text-decoration-none mb-1">
+          algorithm (2)
+        </a>
+      
+        <a href="/category/data-structure" class="badge bg-primary text-decoration-none mb-1">
+          data-structure (1)
+        </a>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- About section -->
+          <div class="col-md-6">
+            <h5>About My Blog</h5>
+            <p>My blog write about design system, design pattern, algorithm and anything I like and things so people want to know.</p>
+          </div>
+
+          <!-- Contact information section -->
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-envelope"></i> dangduyhoang3009@gmail.com</li>
+              <li><i class="bi bi-github"></i> <a href="https://github.com/hoangdangduy" class="text-white">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright information -->
+        <div class="text-center mt-4">
+          <p>&copy; My blog start from 2025. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript bundle for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
