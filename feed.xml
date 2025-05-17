@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-17T10:43:42+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code: Tính trung vị của 2 mảng đã được sắp xếp</title><link href="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/" rel="alternate" type="text/html" title="Leet code: Tính trung vị của 2 mảng đã được sắp xếp" /><published>2025-05-16T17:29:00+00:00</published><updated>2025-05-16T17:29:00+00:00</updated><id>/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays</id><content type="html" xml:base="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/"><![CDATA[<p>Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-17T16:47:53+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code: Tính trung vị của 2 mảng đã được sắp xếp</title><link href="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/" rel="alternate" type="text/html" title="Leet code: Tính trung vị của 2 mảng đã được sắp xếp" /><published>2025-05-16T17:29:00+00:00</published><updated>2025-05-16T17:29:00+00:00</updated><id>/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays</id><content type="html" xml:base="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/"><![CDATA[<p>Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp</p>
 
 <p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
 
@@ -46,45 +46,53 @@
 
 <p>giả sử ta có mảng</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>index</th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>s1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>5</td>
-      <td>6</td>
-      <td>7</td>
-      <td>9</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>s2</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-      <td>4</td>
-      <td>4</td>
-      <td>8</td>
-      <td>10</td>
-      <td>12</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2">index</th>
+              <th class="p-1 p-sm-2">0</th>
+              <th class="p-1 p-sm-2">1</th>
+              <th class="p-1 p-sm-2">2</th>
+              <th class="p-1 p-sm-2">3</th>
+              <th class="p-1 p-sm-2">4</th>
+              <th class="p-1 p-sm-2">5</th>
+              <th class="p-1 p-sm-2">6</th>
+              <th class="p-1 p-sm-2">7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">s1</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">5</td>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">7</td>
+              <td class="p-1 p-sm-2">9</td>
+              <td class="p-1 p-sm-2"></td>
+              <td class="p-1 p-sm-2"></td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">s2</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">8</td>
+              <td class="p-1 p-sm-2">10</td>
+              <td class="p-1 p-sm-2">12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <p>Ta sẽ chia mảng s1 thành 2 phần với index vị trí giữa là partition1, mảng s2 thành 2 phần với index vị trí giữa là partition2.</p>
 
@@ -161,48 +169,56 @@
 
 <p>Áp dụng vào ví dụ trên ta có bảng các bước chi tiết như sau:</p>
 
-<table>
-  <thead>
-    <tr>
-      <th><strong>step</strong></th>
-      <th><strong>low</strong></th>
-      <th><strong>high</strong></th>
-      <th><strong>partition1</strong></th>
-      <th><strong>partition2</strong></th>
-      <th><strong>left s1 ___ right s1</strong></th>
-      <th><strong>left s2 ___ right s2</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>6</td>
-      <td>3</td>
-      <td>4</td>
-      <td>1, 3, 5   ___   6, 7, 9</td>
-      <td>2, 3, 4, 4    ___   4, 8, 10, 12</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-      <td>6</td>
-      <td>1    ___   3, 5, 6, 7, 9</td>
-      <td>2, 3, 4, 4, 4, 8    ___   10, 12</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>2</td>
-      <td>5</td>
-      <td>1, 3    ___    5, 6, 7, 9</td>
-      <td>2, 3, 4, 4, 4    ___   8, 10, 12</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-10">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2"><b>step</b></th>
+              <th class="p-1 p-sm-2"><b>low</b></th>
+              <th class="p-1 p-sm-2"><b>high</b></th>
+              <th class="p-1 p-sm-2"><b>partition1</b></th>
+              <th class="p-1 p-sm-2"><b>partition2</b></th>
+              <th class="p-1 p-sm-2"><b>left s1 ___ right s1</b></th>
+              <th class="p-1 p-sm-2"><b>left s2 ___ right s2</b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">1, 3, 5 ___ 6, 7, 9</td>
+              <td class="p-1 p-sm-2">2, 3, 4, 4 ___ 4, 8, 10, 12</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">1 ___ 3, 5, 6, 7, 9</td>
+              <td class="p-1 p-sm-2">2, 3, 4, 4, 4, 8 ___ 10, 12</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">5</td>
+              <td class="p-1 p-sm-2">1, 3 ___ 5, 6, 7, 9</td>
+              <td class="p-1 p-sm-2">2, 3, 4, 4, 4 ___ 8, 10, 12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <p>Từ các phân tích trên ta có đoạn code cụ thể như sau:</p>
 
@@ -241,7 +257,7 @@
 
 <p>Vì áp dụng giải thuật binary search nên độ phức tạp chỉ là O(log(min(n,m))).</p>
 
-<p>Source code tham khảo: https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_4_Median_of_Two_Sorted_Arrays</p>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp]]></summary></entry><entry><title type="html">Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp</title><link href="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/" rel="alternate" type="text/html" title="Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp" /><published>2025-05-10T14:16:00+00:00</published><updated>2025-05-10T14:16:00+00:00</updated><id>/leet-code/algorithm/2025/05/10/leet-code-sliding-window</id><content type="html" xml:base="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/"><![CDATA[<p>Bài toán: Tìm độ dài xâu con dài nhất không bị trùng lặp</p>
+<p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_4_Median_of_Two_Sorted_Arrays/">https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_4_Median_of_Two_Sorted_Arrays</a></p>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Tìm giá trị trung vị của 2 mảng đã được sắp xếp]]></summary></entry><entry><title type="html">Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp</title><link href="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/" rel="alternate" type="text/html" title="Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp" /><published>2025-05-10T14:16:00+00:00</published><updated>2025-05-10T14:16:00+00:00</updated><id>/leet-code/algorithm/2025/05/10/leet-code-sliding-window</id><content type="html" xml:base="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/"><![CDATA[<p>Bài toán: Tìm độ dài xâu con dài nhất không bị trùng lặp</p>
 
 <p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">https://leetcode.com/problems/longest-substring-without-repeating-characters/</a></p>
 
