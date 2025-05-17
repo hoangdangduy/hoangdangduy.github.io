@@ -92,127 +92,246 @@
 
 <p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
 
-<ol>
-  <li>Tiếp cận bài toán hướng đơn giản</li>
-</ol>
+<h2 id="1-tiếp-cận-bài-toán-hướng-đơn-giản">1. Tiếp cận bài toán hướng đơn giản</h2>
 
 <p>Vì 2 mảng đã sắp xếp nên chúng ta có thể duyệt 2 mảng lần lượt từ trái qua phải hoặc từ phải qua trái, sau đó so sánh từng giá trị với nhau và lưu lại vào mảng mới.</p>
 
 <p>Khi có mảng mới, nếu:</p>
 <ul>
-  <li>mảng có lẻ phần tử thì lấy s3.length/2 là giá trị cần tìm.</li>
-  <li>mảng có chẵn phần tử thì lấy ((s3.length/2 - 1) + s3.length/2) / 2 là giá trị cần tìm.
-```
-i = s1.length - 1
-j = s2.length - 1</li>
+  <li>mảng có lẻ phần tử thì lấy <code class="language-plaintext highlighter-rouge">s3.length/2</code> là giá trị cần tìm.</li>
+  <li>mảng có chẵn phần tử thì lấy <code class="language-plaintext highlighter-rouge">((s3.length/2 - 1) + s3.length/2) / 2</code> là giá trị cần tìm.</li>
 </ul>
 
-<p>s3 = [s1.length + s2.length]
-k = s3.length</p>
+<p>Ta sẽ có được giải thuật như sau:</p>
 
-<p>while (i &gt;= 0 &amp;&amp; j &gt;= 0) {
-    if (s1[i] &gt; s2[j]) {
-        s3[k] = s1[i];
-        i–;
-    } else {
-        s3[k] = s1[j];
-        j–;
-    }
-}</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  i = s1.length - 1
+  j = s2.length - 1
+  
+  s3 = [s1.length + s2.length]
+  k = s3.length
+  
+  while (i &gt;= 0 &amp;&amp; j &gt;= 0) {
+      if (s1[i] &gt; s2[j]) {
+          s3[k] = s1[i];
+          i--;
+      } else {
+          s3[k] = s1[j];
+          j--;
+      }
+  }
+  
+  double result;
+  if (s3.length % 2 == 0) {
+      result = (s3[s3.length/2 - 1] + s3[s3.length/2]) / 2;
+  } else {
+      result = s3[s3.length/2];
+  }
+</code></pre></div></div>
 
-<p>double result;
-if (s3.length % 2 == 0) {
-    result = (s3[s3.length/2 - 1] = s3[s3.length/2]) / 2;
-} else {
-    result = s3[s3.length/2];
-}</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Với đoạn code trên ta có thể thấy i chạy từ 0 -&gt; s1.length, j chạy từ 0 -&gt; s2.length tức là độ phức tạp của thuật toán là O(max(n,m)) với n là độ dài của mảng s1 và m là độ dài của mảng s2.
+<p>Với đoạn code trên ta có thể thấy i chạy từ <code class="language-plaintext highlighter-rouge">0 -&gt; s1.length</code>, j chạy từ <code class="language-plaintext highlighter-rouge">0 -&gt; s2.length</code> tức là độ phức tạp của thuật toán là O(max(n,m)) với n là độ dài của mảng s1 và m là độ dài của mảng s2.</p>
 
-2. Tiếp cận bài toán hướng tối ưu
+<h2 id="2-tiếp-cận-bài-toán-hướng-tối-ưu">2. Tiếp cận bài toán hướng tối ưu</h2>
 
-Vì 2 mảng này đã được sắp xếp rồi thì có thể áp dụng hướng tiếp cận binary search để chia mảng là 2 phần.
+<p>Vì 2 mảng này đã được sắp xếp rồi thì có thể áp dụng hướng tiếp cận binary search để chia mảng là 2 phần.</p>
 
-giả sử ta có mảng
+<p>giả sử ta có mảng</p>
 
-| index | 0 | 1 | 2 | 3 | 4 | 5 | 6  | 7  |
-|-------|---|---|---|---|---|---|----|----|
-| s1    | 1 | 3 | 5 | 6 | 7 | 9 |    |    |
-| s2    | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 |
+<table>
+  <thead>
+    <tr>
+      <th>index</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>s1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>9</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>s2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>8</td>
+      <td>10</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
 
-Ta sẽ chia mảng s1 thành 2 phần với index vị trí giữa là partition1, mảng s2 thành 2 phân với index vị trí giữa là partition2.
+<p>Ta sẽ chia mảng s1 thành 2 phần với index vị trí giữa là partition1, mảng s2 thành 2 phần với index vị trí giữa là partition2.</p>
 
-Tạo sẵn biến:
-- `low = 0`
-- `high = s1.length`
+<p>Tạo sẵn biến:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">low = 0</code></li>
+  <li><code class="language-plaintext highlighter-rouge">high = s1.length</code></li>
+</ul>
 
-[A] Ta sẽ lấy:
-- `partition1 = (low + high) / 2` để chia mảng s1 thành 2 phần
-  + partition1 = (0 + 6) / 2 = 3
-- `partition2 = (s1.length + s2.length + 1) / 2 - partition1` để chia mảng s2 thành 2 phần
-  + partition2 = (6 + 8 + 1) / 2 - 4 = 3
-  + Giải thích: ý tưởng là sẽ chia mảng `s1 ∪ s2` nên ở s1 đã lấy số lượng partition1 phần tử thì ở s2 lấy một nửa của `s1 ∪ s2` trừ đi số lượng partition1
+<p>[A] Ta sẽ lấy:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">partition1 = (low + high) / 2</code> để chia mảng s1 thành 2 phần
+    <ul>
+      <li>partition1 = (0 + 6) / 2 = 3</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">partition2 = (s1.length + s2.length + 1) / 2 - partition1</code> để chia mảng s2 thành 2 phần
+    <ul>
+      <li>partition2 = (6 + 8 + 1) / 2 - 3 = 4</li>
+    </ul>
+  </li>
+</ul>
 
-Khi tìm được partition1 và partition2 ta sẽ kiểm tra giá trị của nó và lân cận nó so với vị trí ở mảng còn lại đã thoả mã 2 vị trí ở chính giữa chưa.
+<p>Ý tưởng là sẽ chia mảng <code class="language-plaintext highlighter-rouge">s1 ∪ s2</code> nên ở s1 đã lấy số lượng partition1 phần tử thì ở s2 lấy một nửa của <code class="language-plaintext highlighter-rouge">s1 ∪ s2</code> trừ đi số lượng partition1</p>
 
-coi:
-- `maxLeft1 = s1[partition1 - 1] = s[3-1] = 5` là giá trị lớn nhất bên trái của partition1
-  + mảng bên trái của s1: [1, 3, 5]
-- `minRight1 = s1[partition1] = s[3] = 6` là giá trị nhỏ nhất bên phải của partition1
-  + mảng bên phải của s1: [6, 7, 9]
-- `maxLeft2 = s2[partition2 - 1] = s[3-1] = s[2] = 4` là giá trị lớn nhất bên trái của partition2
-  + mảng bên trái của s2: [2, 3, 4]
-- `minRight2 = s2[partition2] = s[3] = 5` là giá trị nhỏ nhất bên phải của partition2
-  + mảng bên phải của s2: [5, 6, 8, 10, 12]
+<p>Khi tìm được partition1 và partition2 ta sẽ kiểm tra giá trị của nó và lân cận nó so với vị trí ở mảng còn lại đã thoả mã 2 vị trí ở chính giữa chưa.</p>
 
-nếu:
-- `maxLeft1 &lt;= minRight2 &amp;&amp; maxLeft2 &lt;= minRight1` thì ta đã tìm được vị trí chia
-- `maxLeft1 &gt; minRight2` tức là bên trái đang nhiều phần tử hơn, cần giảm partition1
-  + set `high = partition1 - 1`
-- `maxLeft2 &gt; minRight1` tức là bên phải đang nhiều phần tử hơn, cần tăng partition1
-  + set `low = partition1 + 1`
+<p>coi:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">maxLeft1 = s1[partition1 - 1] = s[3-1] = 5</code> là giá trị lớn nhất bên trái của partition1
+    <ul>
+      <li>mảng bên trái của s1: [1, 3, 5]</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">minRight1 = s1[partition1] = s[3] = 6</code> là giá trị nhỏ nhất bên phải của partition1
+    <ul>
+      <li>mảng bên phải của s1: [6, 7, 9]</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">maxLeft2 = s2[partition2 - 1] = s[4-1] = s[3] = 4</code> là giá trị lớn nhất bên trái của partition2
+    <ul>
+      <li>mảng bên trái của s2: [2, 3, 4, 4]</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">minRight2 = s2[partition2] = s[4] = 4</code> là giá trị nhỏ nhất bên phải của partition2
+    <ul>
+      <li>mảng bên phải của s2: [4, 8, 10, 12]</li>
+    </ul>
+  </li>
+</ul>
 
-Nếu chưa tìm được vị trí chia thì quay lại bước [A] để tìm lại partition1 và partition2, ngược lại nhảy đến bước [B]
+<p>nếu:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">maxLeft1 &lt;= minRight2 &amp;&amp; maxLeft2 &lt;= minRight1</code> thì ta đã tìm được vị trí chia mảng</li>
+  <li><code class="language-plaintext highlighter-rouge">maxLeft1 &gt; minRight2</code> tức là bên trái đang nhiều phần tử hơn, cần giảm partition1
+    <ul>
+      <li>set <code class="language-plaintext highlighter-rouge">high = partition1 - 1</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">maxLeft2 &gt; minRight1</code> tức là bên phải đang nhiều phần tử hơn, cần tăng partition1
+    <ul>
+      <li>set <code class="language-plaintext highlighter-rouge">low = partition1 + 1</code></li>
+    </ul>
+  </li>
+</ul>
 
-[B] Tính giá trị trung vị
-- Nếu số phần tử lẻ thì trả về max(maxLeft1, maxLeft2)
-- Nếu số phần tử chẵn thì trả về (max(maxLeft1, maxLeft2) + min(minRight1, minRight2)) / 2
+<p>Nếu chưa tìm được vị trí chia mảng thì quay lại bước [A] để tìm lại partition1 và partition2, ngược lại nhảy đến bước [B]</p>
 
-```java
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        if (nums1.length &lt; nums2.length) {
-            return findMedianSortedArrays(nums1, nums2, 0, nums1.length);
-        } else {
-            return findMedianSortedArrays(nums2, nums1, 0, nums2.length);
-        }
-    }
+<p>[B] Tính giá trị trung vị</p>
+<ul>
+  <li>Nếu số phần tử lẻ thì trả về max(maxLeft1, maxLeft2)</li>
+  <li>Nếu số phần tử chẵn thì trả về (max(maxLeft1, maxLeft2) + min(minRight1, minRight2)) / 2</li>
+</ul>
 
-    public double findMedianSortedArrays(int[] s1, int[] s2, int low, int high) {
-        int partition1 = (low + high)/2;
-        int partition2 = (s1.length + s2.length + 1)/2 - partition1;
+<p>Áp dụng vào ví dụ trên ta có bảng các bước chi tiết như sau:</p>
 
-        int maxLeft1 = partition1 == 0 ? maxLeft1 = Integer.MIN_VALUE : s1[partition1-1];
-        int minRight1 = partition1 &lt; s1.length ? s1[partition1] : Integer.MAX_VALUE;
-        int maxLeft2 = partition2 == 0 ? Integer.MIN_VALUE : s2[partition2-1];
-        int minRight2 = partition2 &lt; s2.length ? s2[partition2] : Integer.MAX_VALUE;
+<table>
+  <thead>
+    <tr>
+      <th><strong>step</strong></th>
+      <th><strong>low</strong></th>
+      <th><strong>high</strong></th>
+      <th><strong>partition1</strong></th>
+      <th><strong>partition2</strong></th>
+      <th><strong>left s1 ___ right s1</strong></th>
+      <th><strong>left s2 ___ right s2</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>3</td>
+      <td>4</td>
+      <td>1, 3, 5   ___   6, 7, 9</td>
+      <td>2, 3, 4, 4    ___   4, 8, 10, 12</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>6</td>
+      <td>1    ___   3, 5, 6, 7, 9</td>
+      <td>2, 3, 4, 4, 4, 8    ___   10, 12</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+      <td>1, 3    ___    5, 6, 7, 9</td>
+      <td>2, 3, 4, 4, 4    ___   8, 10, 12</td>
+    </tr>
+  </tbody>
+</table>
 
-        if (maxLeft1 &gt; minRight2) {
-            high = partition1 - 1;
-            return findMedianSortedArrays(s1, s2, low, high);
-        } else if (maxLeft2 &gt; minRight1) {
-            low = partition1 + 1;
-            return findMedianSortedArrays(s1, s2, low, high);
-        } else {
-            if ((s1.length + s2.length) % 2 != 0) {
-                return Math.max(maxLeft1, maxLeft2);
-            } else {
-                return (double) (Math.max(maxLeft1, maxLeft2) + Math.min(minRight1, minRight2)) / 2;
-            }
-        }
-    }
+<p>Từ các phân tích trên ta có đoạn code cụ thể như sau:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">findMedianSortedArrays</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">nums1</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">nums2</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nf">findMedianSortedArrays</span><span class="o">(</span><span class="n">nums1</span><span class="o">,</span> <span class="n">nums2</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">nums1</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nf">findMedianSortedArrays</span><span class="o">(</span><span class="n">nums2</span><span class="o">,</span> <span class="n">nums1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">nums2</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">findMedianSortedArrays</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">s1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">s2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">low</span><span class="o">,</span> <span class="kt">int</span> <span class="n">high</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">partition1</span> <span class="o">=</span> <span class="o">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">partition2</span> <span class="o">=</span> <span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">length</span> <span class="o">+</span> <span class="n">s2</span><span class="o">.</span><span class="na">length</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">partition1</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">maxLeft1</span> <span class="o">=</span> <span class="n">partition1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">maxLeft1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span> <span class="o">:</span> <span class="n">s1</span><span class="o">[</span><span class="n">partition1</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">minRight1</span> <span class="o">=</span> <span class="n">partition1</span> <span class="o">&lt;</span> <span class="n">s1</span><span class="o">.</span><span class="na">length</span> <span class="o">?</span> <span class="n">s1</span><span class="o">[</span><span class="n">partition1</span><span class="o">]</span> <span class="o">:</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">maxLeft2</span> <span class="o">=</span> <span class="n">partition2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span> <span class="o">:</span> <span class="n">s2</span><span class="o">[</span><span class="n">partition2</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">minRight2</span> <span class="o">=</span> <span class="n">partition2</span> <span class="o">&lt;</span> <span class="n">s2</span><span class="o">.</span><span class="na">length</span> <span class="o">?</span> <span class="n">s2</span><span class="o">[</span><span class="n">partition2</span><span class="o">]</span> <span class="o">:</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">maxLeft1</span> <span class="o">&gt;</span> <span class="n">minRight2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">partition1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">return</span> <span class="nf">findMedianSortedArrays</span><span class="o">(</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">,</span> <span class="n">low</span><span class="o">,</span> <span class="n">high</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">maxLeft2</span> <span class="o">&gt;</span> <span class="n">minRight1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">partition1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">return</span> <span class="nf">findMedianSortedArrays</span><span class="o">(</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">,</span> <span class="n">low</span><span class="o">,</span> <span class="n">high</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">((</span><span class="n">s1</span><span class="o">.</span><span class="na">length</span> <span class="o">+</span> <span class="n">s2</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxLeft1</span><span class="o">,</span> <span class="n">maxLeft2</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxLeft1</span><span class="o">,</span> <span class="n">maxLeft2</span><span class="o">)</span> <span class="o">+</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minRight1</span><span class="o">,</span> <span class="n">minRight2</span><span class="o">))</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 </code></pre></div></div>
 
 <p>Vì áp dụng giải thuật binary search nên độ phức tạp chỉ là O(log(min(n,m))).</p>
+
+<p>Source code tham khảo: https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_4_Median_of_Two_Sorted_Arrays</p>
 
 </div>
         </div>
