@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic meta tags for character set and responsive design -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page title from Jekyll front matter -->
+    <title>Leet code: Tìm xâu đối xứng dài nhất</title>
+
+    <!-- External stylesheets: Bootstrap CSS framework and Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS file from your Jekyll project -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <!-- Jekyll plugins for RSS feed and SEO optimization -->
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Your awesome title" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Leet code: Tìm xâu đối xứng dài nhất | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Leet code: Tìm xâu đối xứng dài nhất" />
+<meta name="author" content="hoangdd" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Bài toán: Tìm xâu đối xứng dài nhất" />
+<meta property="og:description" content="Bài toán: Tìm xâu đối xứng dài nhất" />
+<link rel="canonical" href="/leet-code/algorithm/2025/05/18/leet-code-longest-palindromic-substring/" />
+<meta property="og:url" content="/leet-code/algorithm/2025/05/18/leet-code-longest-palindromic-substring/" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-05-18T15:40:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Leet code: Tìm xâu đối xứng dài nhất" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-05-18T15:40:00+00:00","datePublished":"2025-05-18T15:40:00+00:00","description":"Bài toán: Tìm xâu đối xứng dài nhất","headline":"Leet code: Tìm xâu đối xứng dài nhất","mainEntityOfPage":{"@type":"WebPage","@id":"/leet-code/algorithm/2025/05/18/leet-code-longest-palindromic-substring/"},"url":"/leet-code/algorithm/2025/05/18/leet-code-longest-palindromic-substring/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body class="bg-light">
+    <!-- Header section with navigation menu -->
+    <header class="bg-white shadow-sm mb-4">
+      <div class="container">
+        <!-- Include navigation.html from _includes directory -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="container pb-5">
+      <div class="row">
+        <!-- Main content column (8/12 width on medium screens and above) -->
+        <div class="col-md-12 col-lg-8 mb-4">
+          <div class="bg-white p-4 rounded shadow-sm">
+  <h1>Leet code: Tìm xâu đối xứng dài nhất</h1>
+
+  <p class="text-muted mb-3">
+    <i class="bi bi-calendar-event"></i> May 18, 2025
+
+    
+    
+    • <i class="bi bi-person"></i> <a href="/authors/hoangdd/">hoangdd</a>
+    
+
+     •
+      <span class="categories">
+        <i class="bi bi-tags"></i>
+        
+          <span class="badge bg-secondary">leet-code</span>
+        
+          <span class="badge bg-secondary">algorithm</span>
+        
+      </span>
+    
+  </p>
+
+  <p>Bài toán: Tìm xâu đối xứng dài nhất</p>
+
+<p><a href="https://leetcode.com/problems/longest-palindromic-substring/description/">https://leetcode.com/problems/longest-palindromic-substring/description/</a></p>
+
+<p>Ý tưởng giải quyết bài toán là ta sẽ coi các điểm cần duyệt trong xâu là điểm giữa của xâu đối xứng, sau đó sẽ phát triển duyệt sang 2 bên và check thêm các điều kiện để dừng.</p>
+
+<p>Ví dụ với xâu <code class="language-plaintext highlighter-rouge">abcba</code> thì ta sẽ duyệt các bước như sau:</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2">Index</th>
+              <th class="p-1 p-sm-2">0</th>
+              <th class="p-1 p-sm-2">1</th>
+              <th class="p-1 p-sm-2">2</th>
+              <th class="p-1 p-sm-2">3</th>
+              <th class="p-1 p-sm-2">5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">Character</td>
+              <td class="p-1 p-sm-2">a</td>
+              <td class="p-1 p-sm-2">b</td>
+              <td class="p-1 p-sm-2">c</td>
+              <td class="p-1 p-sm-2">b</td>
+              <td class="p-1 p-sm-2">a</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-10">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2">Index</th>
+              <th class="p-1 p-sm-2">start</th>
+              <th class="p-1 p-sm-2">traverse left</th>
+              <th class="p-1 p-sm-2">traverse right</th>
+              <th class="p-1 p-sm-2">palindromic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">a</td>
+              <td class="p-1 p-sm-2">NULL</td>
+              <td class="p-1 p-sm-2">b</td>
+              <td class="p-1 p-sm-2">false</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">b</td>
+              <td class="p-1 p-sm-2">a</td>
+              <td class="p-1 p-sm-2">c</td>
+              <td class="p-1 p-sm-2">false</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">c</td>
+              <td class="p-1 p-sm-2">ab</td>
+              <td class="p-1 p-sm-2">ba</td>
+              <td class="p-1 p-sm-2">true</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">b</td>
+              <td class="p-1 p-sm-2">c</td>
+              <td class="p-1 p-sm-2">a</td>
+              <td class="p-1 p-sm-2">false</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">a</td>
+              <td class="p-1 p-sm-2">b</td>
+              <td class="p-1 p-sm-2">NULL</td>
+              <td class="p-1 p-sm-2">false</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Xâu đối xứng dài nhất tìm được là <code class="language-plaintext highlighter-rouge">abcba</code></p>
+
+<p>Với ví dụ trên ta sẽ triển khai được code giải thuật như sau:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">longestPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">longestPalindrome</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">longestPalindrome</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">longestPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">,</span> <span class="nc">String</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">left</span><span class="o">)</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">left</span><span class="o">--;</span>
+            <span class="n">right</span><span class="o">++;</span>
+        <span class="o">}</span>
+        <span class="n">left</span><span class="o">++;</span>
+        <span class="n">right</span><span class="o">--;</span>
+        <span class="k">if</span> <span class="o">((</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">result</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">left</span><span class="o">,</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Độ phức tạp của thuật toán là O(n^2)</p>
+
+<p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java">https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java</a></p>
+
+</div>
+        </div>
+
+        <!-- Sidebar column (4/12 width on medium screens and above) -->
+<div class="col-md-12 col-lg-4">
+  <!-- Recent Posts widget -->
+  <div class="bg-white p-4 rounded shadow-sm mb-4">
+    <h4 class="mb-3">Recent Posts</h4>
+    <ul class="list-unstyled">
+      <!-- Loop through 5 most recent posts -->
+      
+        <li class="mb-2">
+          <a href="/leet-code/algorithm/2025/05/18/leet-code-longest-palindromic-substring/" class="text-decoration-none">Leet code: Tìm xâu đối xứng dài nhất</a>
+          <small class="text-muted d-block">May 18, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/" class="text-decoration-none">Leet code: Tính trung vị của 2 mảng đã được sắp xếp</a>
+          <small class="text-muted d-block">May 16, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/data-structure/2025/05/10/linked-list/" class="text-decoration-none">Linked list</a>
+          <small class="text-muted d-block">May 10, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/leet-code/algorithm/2025/05/10/leet-code-sliding-window/" class="text-decoration-none">Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp</a>
+          <small class="text-muted d-block">May 10, 2025</small>
+        </li>
+      
+        <li class="mb-2">
+          <a href="/design-system/2025/04/19/consistency-hashing/" class="text-decoration-none">Thiết kế lưu trữ dữ liệu phân tán với Consistency Hashing</a>
+          <small class="text-muted d-block">Apr 19, 2025</small>
+        </li>
+      
+    </ul>
+  </div>
+
+  <!-- Categories widget -->
+  <div class="bg-white p-4 rounded shadow-sm">
+    <h4 class="mb-3">Categories</h4>
+    <div class="categories">
+      <!-- Loop through all categories -->
+      
+        <a href="/category/design-system" class="badge bg-primary text-decoration-none mb-1">
+          design-system (1)
+        </a>
+      
+        <a href="/category/leet-code" class="badge bg-primary text-decoration-none mb-1">
+          leet-code (3)
+        </a>
+      
+        <a href="/category/algorithm" class="badge bg-primary text-decoration-none mb-1">
+          algorithm (3)
+        </a>
+      
+        <a href="/category/data-structure" class="badge bg-primary text-decoration-none mb-1">
+          data-structure (1)
+        </a>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- About section -->
+          <div class="col-md-6">
+            <h5>About My Blog</h5>
+            <p>My blog write about design system, design pattern, algorithm and anything I like and things so people want to know.</p>
+          </div>
+
+          <!-- Contact information section -->
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-envelope"></i> dangduyhoang3009@gmail.com</li>
+              <li><i class="bi bi-github"></i> <a href="https://github.com/hoangdangduy" class="text-white">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright information -->
+        <div class="text-center mt-4">
+          <p>&copy; My blog start from 2025. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript bundle for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/authors/hoangdd/</loc>
-<lastmod>2025-05-17T17:14:44+00:00</lastmod>
+<lastmod>2025-05-18T16:45:33+00:00</lastmod>
 </url>
 <url>
 <loc>/design-system/2025/04/19/consistency-hashing/</loc>
@@ -19,6 +19,10 @@
 <url>
 <loc>/leet-code/algorithm/2025/05/16/leet-code-median-of-two-sorted-arrays/</loc>
 <lastmod>2025-05-16T17:29:00+00:00</lastmod>
+</url>
+<url>
+<loc>/leet-code/algorithm/2025/05/18/leet-code-longest-palindromic-substring/</loc>
+<lastmod>2025-05-18T15:40:00+00:00</lastmod>
 </url>
 <url>
 <loc>/about</loc>
