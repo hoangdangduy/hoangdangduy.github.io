@@ -1,5 +1,5 @@
 ---
-title:  "Leet code: Tính trung vị của 2 mảng đã được sắp xếp"
+title:  "Leet code 4: Tính trung vị của 2 mảng đã được sắp xếp"
 date:   2025-05-16 24:29:00 +0700
 categories: leet-code algorithm
 author: hoangdd

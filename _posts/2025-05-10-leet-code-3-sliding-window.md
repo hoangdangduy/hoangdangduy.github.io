@@ -1,5 +1,5 @@
 ---
-title:  "Leet code: tìm độ dài xâu con dài nhất không bị trùng lặp"
+title:  "Leet code 3: tìm độ dài xâu con dài nhất không bị trùng lặp"
 date:   2025-05-10 21:16:00 +0700
 categories: leet-code algorithm
 author: hoangdd

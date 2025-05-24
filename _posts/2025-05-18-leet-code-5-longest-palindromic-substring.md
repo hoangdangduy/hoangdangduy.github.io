@@ -1,5 +1,5 @@
 ---
-title:  "Leet code: Tìm xâu đối xứng dài nhất"
+title:  "Leet code 5: Tìm xâu đối xứng dài nhất"
 date:   2025-05-18 22:40:00 +0700
 categories: leet-code algorithm
 author: hoangdd
