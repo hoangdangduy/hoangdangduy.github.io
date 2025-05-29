@@ -1,4 +1,161 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-24T03:43:22+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 5: Tìm xâu đối xứng dài nhất</title><link href="/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/" rel="alternate" type="text/html" title="Leet code 5: Tìm xâu đối xứng dài nhất" /><published>2025-05-18T15:40:00+00:00</published><updated>2025-05-18T15:40:00+00:00</updated><id>/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring</id><content type="html" xml:base="/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/"><![CDATA[<p>Bài toán: Tìm xâu đối xứng dài nhất</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-29T15:36:11+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 6: Chuyển đổi xâu theo dạng zigzag</title><link href="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/" rel="alternate" type="text/html" title="Leet code 6: Chuyển đổi xâu theo dạng zigzag" /><published>2025-05-28T15:28:00+00:00</published><updated>2025-05-28T15:28:00+00:00</updated><id>/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion</id><content type="html" xml:base="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/"><![CDATA[<p>Bài toán: Chuyển đổi xâu theo dạng zigzag</p>
+
+<p><a href="https://leetcode.com/problems/zigzag-conversion">https://leetcode.com/problems/zigzag-conversion</a></p>
+
+<p>Ví dụ với xâu <code class="language-plaintext highlighter-rouge">PAYPALISHIRING</code> thì ta sẽ có index như sau:</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2">Index</th>
+              <th class="p-1 p-sm-2">0</th>
+              <th class="p-1 p-sm-2">1</th>
+              <th class="p-1 p-sm-2">2</th>
+              <th class="p-1 p-sm-2">3</th>
+              <th class="p-1 p-sm-2">4</th>
+              <th class="p-1 p-sm-2">5</th>
+              <th class="p-1 p-sm-2">6</th>
+              <th class="p-1 p-sm-2">7</th>
+              <th class="p-1 p-sm-2">8</th>
+              <th class="p-1 p-sm-2">9</th>
+              <th class="p-1 p-sm-2">10</th>
+              <th class="p-1 p-sm-2">11</th>
+              <th class="p-1 p-sm-2">12</th>
+              <th class="p-1 p-sm-2">13</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">Character</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">Y</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">L</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">S</td>
+              <td class="p-1 p-sm-2">H</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">R</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">N</td>
+              <td class="p-1 p-sm-2">G</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <img src="/assets/images/leetcode/exe-6/jump.png" alt="leet_code_6_jump" class="img-fluid" />
+  <p class="text-muted">Hình 1: Bước nhảy</p>
+</div>
+
+<p>Dựa theo ví dụ ta sẽ hình dung ra được n chính là số hàng sẽ được triển khai. Ứng với mỗi hàng ta sẽ tạo 1 StringBuilder để chứa các ký tự của hàng đó, tức là ta sẽ có 1 array của các StringBuilder.</p>
+
+<p>Chúng ta sẽ tạo ra biến jump tăng/giảm current row.</p>
+
+<p>Khi đó ta có bảng mô tả như sau:</p>
+<ul>
+  <li>current row = 0 thì jump = 1</li>
+  <li>current row = n - 1 thì jump = -1</li>
+  <li>current row = current row + jump</li>
+</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="p-1 p-sm-2">Index Character</th>
+              <th class="p-1 p-sm-2">Character</th>
+              <th class="p-1 p-sm-2">Current row</th>
+              <th class="p-1 p-sm-2">Jump</th>
+              <th class="p-1 p-sm-2">Index Row</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[0].append(P)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(A)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">Y</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[2].append(Y)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">3</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(P)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">4</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[0].append(A)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">5</td>
+              <td class="p-1 p-sm-2">L</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(L)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[2].append(I)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">7</td>
+              <td class="p-1 p-sm-2">S</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(S)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">8</td>
+              <td class="p-1 p-sm-2">H</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[0].append(H)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Sau đó loop array StringBuilder lúc đầu thì sẽ ra được kết quả.</p>
+
+<p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java">https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java</a></p>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Chuyển đổi xâu theo dạng zigzag]]></summary></entry><entry><title type="html">Leet code 5: Tìm xâu đối xứng dài nhất</title><link href="/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/" rel="alternate" type="text/html" title="Leet code 5: Tìm xâu đối xứng dài nhất" /><published>2025-05-18T15:40:00+00:00</published><updated>2025-05-18T15:40:00+00:00</updated><id>/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring</id><content type="html" xml:base="/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/"><![CDATA[<p>Bài toán: Tìm xâu đối xứng dài nhất</p>
 
 <p><a href="https://leetcode.com/problems/longest-palindromic-substring/description/">https://leetcode.com/problems/longest-palindromic-substring/description/</a></p>
 
@@ -18,7 +175,7 @@
               <th class="p-1 p-sm-2">1</th>
               <th class="p-1 p-sm-2">2</th>
               <th class="p-1 p-sm-2">3</th>
-              <th class="p-1 p-sm-2">5</th>
+              <th class="p-1 p-sm-2">4</th>
             </tr>
           </thead>
           <tbody>

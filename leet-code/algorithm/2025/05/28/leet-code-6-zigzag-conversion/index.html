@@ -7,7 +7,7 @@
     <meta name="google-site-verification" content="huRAfaXEkNA5MoVNFz92e8i_MMAJ1wcpJnaUyru7lxM" />
 
     <!-- Page title from Jekyll front matter -->
-    <title>Leet code 5: Tìm xâu đối xứng dài nhất</title>
+    <title>Leet code 6: Chuyển đổi xâu theo dạng zigzag</title>
 
     <!-- External stylesheets: Bootstrap CSS framework and Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -19,22 +19,22 @@
     <!-- Jekyll plugins for RSS feed and SEO optimization -->
     <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Your awesome title" />
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Leet code 5: Tìm xâu đối xứng dài nhất | Your awesome title</title>
+<title>Leet code 6: Chuyển đổi xâu theo dạng zigzag | Your awesome title</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Leet code 5: Tìm xâu đối xứng dài nhất" />
+<meta property="og:title" content="Leet code 6: Chuyển đổi xâu theo dạng zigzag" />
 <meta name="author" content="hoangdd" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Bài toán: Tìm xâu đối xứng dài nhất" />
-<meta property="og:description" content="Bài toán: Tìm xâu đối xứng dài nhất" />
-<link rel="canonical" href="/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/" />
-<meta property="og:url" content="/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/" />
+<meta name="description" content="Bài toán: Chuyển đổi xâu theo dạng zigzag" />
+<meta property="og:description" content="Bài toán: Chuyển đổi xâu theo dạng zigzag" />
+<link rel="canonical" href="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/" />
+<meta property="og:url" content="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-05-18T15:40:00+00:00" />
+<meta property="article:published_time" content="2025-05-28T15:28:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Leet code 5: Tìm xâu đối xứng dài nhất" />
+<meta property="twitter:title" content="Leet code 6: Chuyển đổi xâu theo dạng zigzag" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-05-18T15:40:00+00:00","datePublished":"2025-05-18T15:40:00+00:00","description":"Bài toán: Tìm xâu đối xứng dài nhất","headline":"Leet code 5: Tìm xâu đối xứng dài nhất","mainEntityOfPage":{"@type":"WebPage","@id":"/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/"},"url":"/leet-code/algorithm/2025/05/18/leet-code-5-longest-palindromic-substring/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-05-28T15:28:00+00:00","datePublished":"2025-05-28T15:28:00+00:00","description":"Bài toán: Chuyển đổi xâu theo dạng zigzag","headline":"Leet code 6: Chuyển đổi xâu theo dạng zigzag","mainEntityOfPage":{"@type":"WebPage","@id":"/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/"},"url":"/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -67,10 +67,10 @@
         <!-- Main content column (8/12 width on medium screens and above) -->
         <div class="col-md-12 col-lg-8 mb-4">
           <div class="bg-white p-4 rounded shadow-sm">
-  <h1>Leet code 5: Tìm xâu đối xứng dài nhất</h1>
+  <h1>Leet code 6: Chuyển đổi xâu theo dạng zigzag</h1>
 
   <p class="text-muted mb-3">
-    <i class="bi bi-calendar-event"></i> May 18, 2025
+    <i class="bi bi-calendar-event"></i> May 28, 2025
 
     
     
@@ -89,13 +89,11 @@
     
   </p>
 
-  <p>Bài toán: Tìm xâu đối xứng dài nhất</p>
+  <p>Bài toán: Chuyển đổi xâu theo dạng zigzag</p>
 
-<p><a href="https://leetcode.com/problems/longest-palindromic-substring/description/">https://leetcode.com/problems/longest-palindromic-substring/description/</a></p>
+<p><a href="https://leetcode.com/problems/zigzag-conversion">https://leetcode.com/problems/zigzag-conversion</a></p>
 
-<p>Ý tưởng giải quyết bài toán là ta sẽ coi các điểm cần duyệt trong xâu là điểm giữa của xâu đối xứng, sau đó sẽ phát triển duyệt sang 2 bên và check thêm các điều kiện để dừng.</p>
-
-<p>Ví dụ với xâu <code class="language-plaintext highlighter-rouge">abcba</code> thì ta sẽ duyệt các bước như sau:</p>
+<p>Ví dụ với xâu <code class="language-plaintext highlighter-rouge">PAYPALISHIRING</code> thì ta sẽ có index như sau:</p>
 
 <div class="container-fluid">
   <div class="row">
@@ -110,16 +108,34 @@
               <th class="p-1 p-sm-2">2</th>
               <th class="p-1 p-sm-2">3</th>
               <th class="p-1 p-sm-2">4</th>
+              <th class="p-1 p-sm-2">5</th>
+              <th class="p-1 p-sm-2">6</th>
+              <th class="p-1 p-sm-2">7</th>
+              <th class="p-1 p-sm-2">8</th>
+              <th class="p-1 p-sm-2">9</th>
+              <th class="p-1 p-sm-2">10</th>
+              <th class="p-1 p-sm-2">11</th>
+              <th class="p-1 p-sm-2">12</th>
+              <th class="p-1 p-sm-2">13</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="p-1 p-sm-2">Character</td>
-              <td class="p-1 p-sm-2">a</td>
-              <td class="p-1 p-sm-2">b</td>
-              <td class="p-1 p-sm-2">c</td>
-              <td class="p-1 p-sm-2">b</td>
-              <td class="p-1 p-sm-2">a</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">Y</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">L</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">S</td>
+              <td class="p-1 p-sm-2">H</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">R</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">N</td>
+              <td class="p-1 p-sm-2">G</td>
             </tr>
           </tbody>
         </table>
@@ -128,55 +144,98 @@
   </div>
 </div>
 
+<div style="text-align: center;">
+  <img src="/assets/images/leetcode/exe-6/jump.png" alt="leet_code_6_jump" class="img-fluid" />
+  <p class="text-muted">Hình 1: Bước nhảy</p>
+</div>
+
+<p>Dựa theo ví dụ ta sẽ hình dung ra được n chính là số hàng sẽ được triển khai. Ứng với mỗi hàng ta sẽ tạo 1 StringBuilder để chứa các ký tự của hàng đó, tức là ta sẽ có 1 array của các StringBuilder.</p>
+
+<p>Chúng ta sẽ tạo ra biến jump tăng/giảm current row.</p>
+
+<p>Khi đó ta có bảng mô tả như sau:</p>
+<ul>
+  <li>current row = 0 thì jump = 1</li>
+  <li>current row = n - 1 thì jump = -1</li>
+  <li>current row = current row + jump</li>
+</ul>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-10">
+    <div class="col-12 col-md-8">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th class="p-1 p-sm-2">Index</th>
-              <th class="p-1 p-sm-2">start</th>
-              <th class="p-1 p-sm-2">traverse left</th>
-              <th class="p-1 p-sm-2">traverse right</th>
-              <th class="p-1 p-sm-2">palindromic</th>
+              <th class="p-1 p-sm-2">Index Character</th>
+              <th class="p-1 p-sm-2">Character</th>
+              <th class="p-1 p-sm-2">Current row</th>
+              <th class="p-1 p-sm-2">Jump</th>
+              <th class="p-1 p-sm-2">Index Row</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="p-1 p-sm-2">0</td>
-              <td class="p-1 p-sm-2">a</td>
-              <td class="p-1 p-sm-2">NULL</td>
-              <td class="p-1 p-sm-2">b</td>
-              <td class="p-1 p-sm-2">false</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[0].append(P)</td>
             </tr>
             <tr>
               <td class="p-1 p-sm-2">1</td>
-              <td class="p-1 p-sm-2">b</td>
-              <td class="p-1 p-sm-2">a</td>
-              <td class="p-1 p-sm-2">c</td>
-              <td class="p-1 p-sm-2">false</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(A)</td>
             </tr>
             <tr>
               <td class="p-1 p-sm-2">2</td>
-              <td class="p-1 p-sm-2">c</td>
-              <td class="p-1 p-sm-2">ab</td>
-              <td class="p-1 p-sm-2">ba</td>
-              <td class="p-1 p-sm-2">true</td>
+              <td class="p-1 p-sm-2">Y</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[2].append(Y)</td>
             </tr>
             <tr>
               <td class="p-1 p-sm-2">3</td>
-              <td class="p-1 p-sm-2">b</td>
-              <td class="p-1 p-sm-2">c</td>
-              <td class="p-1 p-sm-2">a</td>
-              <td class="p-1 p-sm-2">false</td>
+              <td class="p-1 p-sm-2">P</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(P)</td>
             </tr>
             <tr>
               <td class="p-1 p-sm-2">4</td>
-              <td class="p-1 p-sm-2">a</td>
-              <td class="p-1 p-sm-2">b</td>
-              <td class="p-1 p-sm-2">NULL</td>
-              <td class="p-1 p-sm-2">false</td>
+              <td class="p-1 p-sm-2">A</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[0].append(A)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">5</td>
+              <td class="p-1 p-sm-2">L</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(L)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">6</td>
+              <td class="p-1 p-sm-2">I</td>
+              <td class="p-1 p-sm-2">2</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[2].append(I)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">7</td>
+              <td class="p-1 p-sm-2">S</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">-1</td>
+              <td class="p-1 p-sm-2">StringBuilder[1].append(S)</td>
+            </tr>
+            <tr>
+              <td class="p-1 p-sm-2">8</td>
+              <td class="p-1 p-sm-2">H</td>
+              <td class="p-1 p-sm-2">0</td>
+              <td class="p-1 p-sm-2">1</td>
+              <td class="p-1 p-sm-2">StringBuilder[0].append(H)</td>
             </tr>
           </tbody>
         </table>
@@ -185,34 +244,7 @@
   </div>
 </div>
 
-<p>Xâu đối xứng dài nhất tìm được là <code class="language-plaintext highlighter-rouge">abcba</code></p>
-
-<p>Với ví dụ trên ta sẽ triển khai được code giải thuật như sau:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">longestPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">longestPalindrome</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">longestPalindrome</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">longestPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">,</span> <span class="nc">String</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">left</span><span class="o">)</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">))</span> <span class="o">{</span>
-            <span class="n">left</span><span class="o">--;</span>
-            <span class="n">right</span><span class="o">++;</span>
-        <span class="o">}</span>
-        <span class="n">left</span><span class="o">++;</span>
-        <span class="n">right</span><span class="o">--;</span>
-        <span class="k">if</span> <span class="o">((</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">result</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">left</span><span class="o">,</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-    <span class="o">}</span>
-</code></pre></div></div>
-
-<p>Độ phức tạp của thuật toán là O(n^2)</p>
+<p>Sau đó loop array StringBuilder lúc đầu thì sẽ ra được kết quả.</p>
 
 <p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java">https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java</a></p>
 
