@@ -159,4 +159,4 @@ Khi đó ta có bảng mô tả như sau:
 
 Sau đó loop array StringBuilder lúc đầu thì sẽ ra được kết quả.
 
-Source code tham khảo: [https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java](https://github.com/hoangdangduy/System_Patterns_Algorithm/blob/Master/Leetcode/src/_5_Longest_Palindromic_Substring/Solution.java)
+Source code tham khảo: [https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_6_Zigzag_Conversion](https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_6_Zigzag_Conversion)
