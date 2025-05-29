@@ -24,7 +24,7 @@ Ví dụ với xâu `abcba` thì ta sẽ duyệt các bước như sau:
               <th class="p-1 p-sm-2">1</th>
               <th class="p-1 p-sm-2">2</th>
               <th class="p-1 p-sm-2">3</th>
-              <th class="p-1 p-sm-2">5</th>
+              <th class="p-1 p-sm-2">4</th>
             </tr>
           </thead>
           <tbody>
