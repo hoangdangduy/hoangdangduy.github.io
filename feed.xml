@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-06-01T15:21:46+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 8: Chuyển đổi xâu sang số</title><link href="/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)/" rel="alternate" type="text/html" title="Leet code 8: Chuyển đổi xâu sang số" /><published>2025-06-01T15:08:00+00:00</published><updated>2025-06-01T15:08:00+00:00</updated><id>/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)</id><content type="html" xml:base="/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)/"><![CDATA[<p>Bài toán: Chuyển đổi xâu sang số</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-06-01T16:22:33+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 8: Số đối xứng</title><link href="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/" rel="alternate" type="text/html" title="Leet code 8: Số đối xứng" /><published>2025-06-01T16:14:00+00:00</published><updated>2025-06-01T16:14:00+00:00</updated><id>/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber</id><content type="html" xml:base="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/"><![CDATA[<p>Bài toán: Số đối xứng</p>
+
+<p><a href="https://leetcode.com/problems/palindrome-number">https://leetcode.com/problems/palindrome-number</a></p>
+
+<p>Cách 1:</p>
+<ul>
+  <li>Chuyển số sang string</li>
+  <li>Tìm điểm chính giữa và duyệt sang 2 bên</li>
+</ul>
+
+<p>Cách 2:</p>
+<ul>
+  <li>Chia lấy phần nguyên và phân dư. Chia đến giữa thì dừng lại và so sánh 2 số</li>
+</ul>
+
+<p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_9_Palindrome_Number">https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_9_Palindrome_Number</a></p>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Số đối xứng]]></summary></entry><entry><title type="html">Leet code 8: Chuyển đổi xâu sang số</title><link href="/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)/" rel="alternate" type="text/html" title="Leet code 8: Chuyển đổi xâu sang số" /><published>2025-06-01T15:08:00+00:00</published><updated>2025-06-01T15:08:00+00:00</updated><id>/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)</id><content type="html" xml:base="/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)/"><![CDATA[<p>Bài toán: Chuyển đổi xâu sang số</p>
 
 <p><a href="https://leetcode.com/problems/string-to-integer-atoi">https://leetcode.com/problems/string-to-integer-atoi</a></p>
 

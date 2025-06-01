@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/authors/hoangdd/</loc>
-<lastmod>2025-06-01T15:21:46+00:00</lastmod>
+<lastmod>2025-06-01T16:22:33+00:00</lastmod>
 </url>
 <url>
 <loc>/design-system/2025/04/19/consistency-hashing/</loc>
@@ -33,6 +33,10 @@
 <lastmod>2025-06-01T15:08:00+00:00</lastmod>
 </url>
 <url>
+<loc>/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/</loc>
+<lastmod>2025-06-01T16:14:00+00:00</lastmod>
+</url>
+<url>
 <loc>/about</loc>
 </url>
 <url>
@@ -45,13 +49,19 @@
 <loc>/category/leet-code/</loc>
 </url>
 <url>
+<loc>/category/leet-code/page/2/</loc>
+</url>
+<url>
 <loc>/category/algorithm/</loc>
+</url>
+<url>
+<loc>/category/algorithm/page/2/</loc>
 </url>
 <url>
 <loc>/category/data-structure/</loc>
 </url>
 <url>
 <loc>/google0e1db09beae6a25f.html</loc>
-<lastmod>2025-06-01T15:21:26+00:00</lastmod>
+<lastmod>2025-06-01T16:22:27+00:00</lastmod>
 </url>
 </urlset>
