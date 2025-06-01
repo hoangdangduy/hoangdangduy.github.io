@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-05-29T15:42:17+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 6: Chuyển đổi xâu theo dạng zigzag</title><link href="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/" rel="alternate" type="text/html" title="Leet code 6: Chuyển đổi xâu theo dạng zigzag" /><published>2025-05-28T15:28:00+00:00</published><updated>2025-05-28T15:28:00+00:00</updated><id>/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion</id><content type="html" xml:base="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/"><![CDATA[<p>Bài toán: Chuyển đổi xâu theo dạng zigzag</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-06-01T15:21:46+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 8: Chuyển đổi xâu sang số</title><link href="/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)/" rel="alternate" type="text/html" title="Leet code 8: Chuyển đổi xâu sang số" /><published>2025-06-01T15:08:00+00:00</published><updated>2025-06-01T15:08:00+00:00</updated><id>/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)</id><content type="html" xml:base="/leet-code/algorithm/2025/06/01/leet-code-8-string-to-integer-(atoi)/"><![CDATA[<p>Bài toán: Chuyển đổi xâu sang số</p>
+
+<p><a href="https://leetcode.com/problems/string-to-integer-atoi">https://leetcode.com/problems/string-to-integer-atoi</a></p>
+
+<p>Duyệt từ trái sang phải của xâu, qua từng ký tự</p>
+<ul>
+  <li>Bỏ qua các ký tự trắng ở đầu xâu, bắt đầu xử lý ở ký tự khác ký tự trắng</li>
+  <li>Gặp ký tự <code class="language-plaintext highlighter-rouge">+</code> hoặc <code class="language-plaintext highlighter-rouge">-</code> thì lưu lại để biết là dương hay âm</li>
+  <li>Gặp ký tự chữ bất kỳ thì dừng lại</li>
+</ul>
+
+<p>Sau 3 điều kiện trên thì sẽ đến kí tự số và bắt đầu xử lý chuyển sang số. nếu không có số nào ngay sau đó thì trả về 0 luôn</p>
+
+<p>Integer.Max_VALUE = 2_147_483_647</p>
+
+<p>Integer.Min_VALUE = -2_147_483_648</p>
+
+<p>Nếu trị tuyệt đối kết quả cần trả về lớn hơn 2_147_483_647 thì ta chỉ cần xem dấu <code class="language-plaintext highlighter-rouge">+</code> hay <code class="language-plaintext highlighter-rouge">-</code> có trong xâu để trả về kết quả tương ứng là 2_147_483_647 hoặc -2_147_483_648 mà không cần tính toán tiếp, ngược lại thì trả về chính kết quả đang xét đi kèm với dấu.</p>
+
+<p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_8_String_To_Integer_atoi">https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_8_String_To_Integer_atoi</a></p>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Chuyển đổi xâu sang số]]></summary></entry><entry><title type="html">Leet code 6: Chuyển đổi xâu theo dạng zigzag</title><link href="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/" rel="alternate" type="text/html" title="Leet code 6: Chuyển đổi xâu theo dạng zigzag" /><published>2025-05-28T15:28:00+00:00</published><updated>2025-05-28T15:28:00+00:00</updated><id>/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion</id><content type="html" xml:base="/leet-code/algorithm/2025/05/28/leet-code-6-zigzag-conversion/"><![CDATA[<p>Bài toán: Chuyển đổi xâu theo dạng zigzag</p>
 
 <p><a href="https://leetcode.com/problems/zigzag-conversion">https://leetcode.com/problems/zigzag-conversion</a></p>
 
