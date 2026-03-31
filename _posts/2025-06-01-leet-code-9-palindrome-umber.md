@@ -1,5 +1,5 @@
 ---
-title:  "Leet code 8: Số đối xứng"
+title:  "Leet code 9: Số đối xứng"
 date:   2025-06-01 23:14:00 +0700
 categories: leet-code algorithm
 author: hoangdd
