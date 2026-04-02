@@ -1,5 +1,5 @@
 ---
-title:  "Leet code 70: Leo thang"
+title:  "Leet code 70: Tính số cách leo thang"
 date:   2026-04-02 09:17:00 +0700
 categories: leet-code algorithm
 author: hoangdd
