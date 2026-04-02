@@ -9,6 +9,9 @@ use_math: true
 
 Link bài toán: [LeetCode 70 - Climbing Stairs](https://leetcode.com/problems/climbing-stairs)
 
+Bài tương tự:
+- [509. Fibonacci Number](https://leetcode.com/problems/fibonacci-number)
+
 Bạn đang leo một cầu thang có `n` bậc. Mỗi lần bạn có thể bước **1 bước** hoặc **2 bước**. Hỏi có bao nhiêu cách khác nhau để leo lên đến đỉnh?
 
 ### Phân tích ví dụ:
