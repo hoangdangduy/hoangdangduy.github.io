@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-03-31T08:10:31+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 9: Số đối xứng</title><link href="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/" rel="alternate" type="text/html" title="Leet code 9: Số đối xứng" /><published>2025-06-01T16:14:00+00:00</published><updated>2025-06-01T16:14:00+00:00</updated><id>/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber</id><content type="html" xml:base="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/"><![CDATA[<p>Bài toán: Số đối xứng</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-04-02T03:37:58+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Leet code 70: Tính số cách leo thang</title><link href="/leet-code/algorithm/2026/04/02/leet-code-70-climbing-stairs/" rel="alternate" type="text/html" title="Leet code 70: Tính số cách leo thang" /><published>2026-04-02T02:17:00+00:00</published><updated>2026-04-02T02:17:00+00:00</updated><id>/leet-code/algorithm/2026/04/02/leet-code-70-climbing-stairs</id><content type="html" xml:base="/leet-code/algorithm/2026/04/02/leet-code-70-climbing-stairs/"><![CDATA[<h2 id="bài-toán-climbing-stairs">Bài toán: Climbing Stairs</h2>
+
+<p>Link bài toán: <a href="https://leetcode.com/problems/climbing-stairs">LeetCode 70 - Climbing Stairs</a></p>
+
+<p>Bạn đang leo một cầu thang có <code class="language-plaintext highlighter-rouge">n</code> bậc. Mỗi lần bạn có thể bước <strong>1 bước</strong> hoặc <strong>2 bước</strong>. Hỏi có bao nhiêu cách khác nhau để leo lên đến đỉnh?</p>
+
+<h3 id="phân-tích-ví-dụ">Phân tích ví dụ:</h3>
+
+<ul>
+  <li><strong>n = 1</strong>: Có 1 cách (<code class="language-plaintext highlighter-rouge">1</code>)</li>
+  <li><strong>n = 2</strong>: Có 2 cách (<code class="language-plaintext highlighter-rouge">1+1</code>, <code class="language-plaintext highlighter-rouge">2</code>)</li>
+  <li><strong>n = 3</strong>: Có 3 cách (<code class="language-plaintext highlighter-rouge">1+1+1</code>, <code class="language-plaintext highlighter-rouge">1+2</code>, <code class="language-plaintext highlighter-rouge">2+1</code>)</li>
+  <li><strong>n = 4</strong>: Có 5 cách (<code class="language-plaintext highlighter-rouge">1+1+1+1</code>, <code class="language-plaintext highlighter-rouge">1+1+2</code>, <code class="language-plaintext highlighter-rouge">1+2+1</code>, <code class="language-plaintext highlighter-rouge">2+1+1</code>, <code class="language-plaintext highlighter-rouge">2+2</code>)</li>
+</ul>
+
+<h3 id="công-thức-tổng-quát">Công thức tổng quát</h3>
+
+<p>Nhận thấy rằng để đạt đến bậc thứ <code class="language-plaintext highlighter-rouge">n</code>, bạn chỉ có thể đi từ bậc <code class="language-plaintext highlighter-rouge">n-1</code> (bước thêm 1 bước) hoặc từ bậc <code class="language-plaintext highlighter-rouge">n-2</code> (bước thêm 2 bước). Do đó, số cách để đạt đến bậc <code class="language-plaintext highlighter-rouge">n</code> là tổng số cách của hai bậc trước đó:</p>
+
+\[f(n) = f(n-1) + f(n-2)\]
+
+<p>Đây chính là dãy số <strong>Fibonacci</strong>.</p>
+
+<hr />
+
+<h3 id="các-phương-pháp-giải-quyết">Các phương pháp giải quyết</h3>
+
+<h4 id="1-top-down-dynamic-programming-memoization">1. Top-down Dynamic Programming (Memoization)</h4>
+<p>Sử dụng đệ quy để tính từ $f(n)$ xuống. Để tránh việc tính toán lặp lại các giá trị đã biết, chúng ta sử dụng một mảng hoặc hash map để lưu trữ kết quả của các bài toán con.</p>
+
+<ul>
+  <li><strong>Độ phức tạp thời gian:</strong> $O(n)$</li>
+  <li><strong>Độ phức tạp không gian:</strong> $O(n)$</li>
+</ul>
+
+<h4 id="2-bottom-up-iterative-dynamic-programming">2. Bottom-up Iterative (Dynamic Programming)</h4>
+<p>Tính toán từ dưới lên trên bắt đầu từ các trường hợp cơ bản ($n=1, n=2$).</p>
+
+<blockquote>
+  <p><strong>Tối ưu:</strong> Vì chúng ta chỉ cần hai giá trị liền trước để tính giá trị hiện tại, ta có thể chỉ cần dùng 2 biến thay vì cả một mảng, giúp đưa độ phức tạp không gian về $O(1)$.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Độ phức tạp thời gian:</strong> $O(n)$</li>
+  <li><strong>Độ phức tạp không gian:</strong> $O(1)$</li>
+</ul>
+
+<hr />
+
+<h3 id="source-code-tham-khảo">Source code tham khảo</h3>
+<p>Bạn có thể xem mã nguồn chi tiết tại: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_70_Climbing_Stairs">GitHub Repository</a></p>]]></content><author><name>hoangdd</name></author><category term="leet-code" /><category term="algorithm" /><summary type="html"><![CDATA[Bài toán: Climbing Stairs]]></summary></entry><entry><title type="html">Leet code 9: Số đối xứng</title><link href="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/" rel="alternate" type="text/html" title="Leet code 9: Số đối xứng" /><published>2025-06-01T16:14:00+00:00</published><updated>2025-06-01T16:14:00+00:00</updated><id>/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber</id><content type="html" xml:base="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/"><![CDATA[<p>Bài toán: Số đối xứng</p>
 
 <p><a href="https://leetcode.com/problems/palindrome-number">https://leetcode.com/problems/palindrome-number</a></p>
 

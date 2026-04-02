@@ -7,7 +7,7 @@
     <meta name="google-site-verification" content="huRAfaXEkNA5MoVNFz92e8i_MMAJ1wcpJnaUyru7lxM" />
 
     <!-- Page title from Jekyll front matter -->
-    <title>Leet code 9: Số đối xứng</title>
+    <title>Leet code 70: Tính số cách leo thang</title>
 
     <!-- External stylesheets: Bootstrap CSS framework and Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -19,26 +19,38 @@
     <!-- Jekyll plugins for RSS feed and SEO optimization -->
     <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Your awesome title" />
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Leet code 9: Số đối xứng | Your awesome title</title>
+<title>Leet code 70: Tính số cách leo thang | Your awesome title</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Leet code 9: Số đối xứng" />
+<meta property="og:title" content="Leet code 70: Tính số cách leo thang" />
 <meta name="author" content="hoangdd" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Bài toán: Số đối xứng" />
-<meta property="og:description" content="Bài toán: Số đối xứng" />
-<link rel="canonical" href="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/" />
-<meta property="og:url" content="/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/" />
+<meta name="description" content="Bài toán: Climbing Stairs" />
+<meta property="og:description" content="Bài toán: Climbing Stairs" />
+<link rel="canonical" href="/leet-code/algorithm/2026/04/02/leet-code-70-climbing-stairs/" />
+<meta property="og:url" content="/leet-code/algorithm/2026/04/02/leet-code-70-climbing-stairs/" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-06-01T16:14:00+00:00" />
+<meta property="article:published_time" content="2026-04-02T02:17:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Leet code 9: Số đối xứng" />
+<meta property="twitter:title" content="Leet code 70: Tính số cách leo thang" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2025-06-01T16:14:00+00:00","datePublished":"2025-06-01T16:14:00+00:00","description":"Bài toán: Số đối xứng","headline":"Leet code 9: Số đối xứng","mainEntityOfPage":{"@type":"WebPage","@id":"/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/"},"url":"/leet-code/algorithm/2025/06/01/leet-code-9-palindrome-umber/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hoangdd"},"dateModified":"2026-04-02T02:17:00+00:00","datePublished":"2026-04-02T02:17:00+00:00","description":"Bài toán: Climbing Stairs","headline":"Leet code 70: Tính số cách leo thang","mainEntityOfPage":{"@type":"WebPage","@id":"/leet-code/algorithm/2026/04/02/leet-code-70-climbing-stairs/"},"url":"/leet-code/algorithm/2026/04/02/leet-code-70-climbing-stairs/"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
   
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+
 
 
   <body class="bg-light">
@@ -69,10 +81,10 @@
         <!-- Main content column (8/12 width on medium screens and above) -->
         <div class="col-md-12 col-lg-8 mb-4">
           <div class="bg-white p-4 rounded shadow-sm">
-  <h1>Leet code 9: Số đối xứng</h1>
+  <h1>Leet code 70: Tính số cách leo thang</h1>
 
   <p class="text-muted mb-3">
-    <i class="bi bi-calendar-event"></i> Jun 1, 2025
+    <i class="bi bi-calendar-event"></i> Apr 2, 2026
 
     
     
@@ -91,22 +103,57 @@
     
   </p>
 
-  <p>Bài toán: Số đối xứng</p>
+  <h2 id="bài-toán-climbing-stairs">Bài toán: Climbing Stairs</h2>
 
-<p><a href="https://leetcode.com/problems/palindrome-number">https://leetcode.com/problems/palindrome-number</a></p>
+<p>Link bài toán: <a href="https://leetcode.com/problems/climbing-stairs">LeetCode 70 - Climbing Stairs</a></p>
 
-<p>Cách 1:</p>
+<p>Bạn đang leo một cầu thang có <code class="language-plaintext highlighter-rouge">n</code> bậc. Mỗi lần bạn có thể bước <strong>1 bước</strong> hoặc <strong>2 bước</strong>. Hỏi có bao nhiêu cách khác nhau để leo lên đến đỉnh?</p>
+
+<h3 id="phân-tích-ví-dụ">Phân tích ví dụ:</h3>
+
 <ul>
-  <li>Chuyển số sang string</li>
-  <li>Tìm điểm chính giữa và duyệt sang 2 bên</li>
+  <li><strong>n = 1</strong>: Có 1 cách (<code class="language-plaintext highlighter-rouge">1</code>)</li>
+  <li><strong>n = 2</strong>: Có 2 cách (<code class="language-plaintext highlighter-rouge">1+1</code>, <code class="language-plaintext highlighter-rouge">2</code>)</li>
+  <li><strong>n = 3</strong>: Có 3 cách (<code class="language-plaintext highlighter-rouge">1+1+1</code>, <code class="language-plaintext highlighter-rouge">1+2</code>, <code class="language-plaintext highlighter-rouge">2+1</code>)</li>
+  <li><strong>n = 4</strong>: Có 5 cách (<code class="language-plaintext highlighter-rouge">1+1+1+1</code>, <code class="language-plaintext highlighter-rouge">1+1+2</code>, <code class="language-plaintext highlighter-rouge">1+2+1</code>, <code class="language-plaintext highlighter-rouge">2+1+1</code>, <code class="language-plaintext highlighter-rouge">2+2</code>)</li>
 </ul>
 
-<p>Cách 2:</p>
+<h3 id="công-thức-tổng-quát">Công thức tổng quát</h3>
+
+<p>Nhận thấy rằng để đạt đến bậc thứ <code class="language-plaintext highlighter-rouge">n</code>, bạn chỉ có thể đi từ bậc <code class="language-plaintext highlighter-rouge">n-1</code> (bước thêm 1 bước) hoặc từ bậc <code class="language-plaintext highlighter-rouge">n-2</code> (bước thêm 2 bước). Do đó, số cách để đạt đến bậc <code class="language-plaintext highlighter-rouge">n</code> là tổng số cách của hai bậc trước đó:</p>
+
+\[f(n) = f(n-1) + f(n-2)\]
+
+<p>Đây chính là dãy số <strong>Fibonacci</strong>.</p>
+
+<hr />
+
+<h3 id="các-phương-pháp-giải-quyết">Các phương pháp giải quyết</h3>
+
+<h4 id="1-top-down-dynamic-programming-memoization">1. Top-down Dynamic Programming (Memoization)</h4>
+<p>Sử dụng đệ quy để tính từ $f(n)$ xuống. Để tránh việc tính toán lặp lại các giá trị đã biết, chúng ta sử dụng một mảng hoặc hash map để lưu trữ kết quả của các bài toán con.</p>
+
 <ul>
-  <li>Chia lấy phần nguyên và phân dư. Chia đến giữa thì dừng lại và so sánh 2 số</li>
+  <li><strong>Độ phức tạp thời gian:</strong> $O(n)$</li>
+  <li><strong>Độ phức tạp không gian:</strong> $O(n)$</li>
 </ul>
 
-<p>Source code tham khảo: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_9_Palindrome_Number">https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_9_Palindrome_Number</a></p>
+<h4 id="2-bottom-up-iterative-dynamic-programming">2. Bottom-up Iterative (Dynamic Programming)</h4>
+<p>Tính toán từ dưới lên trên bắt đầu từ các trường hợp cơ bản ($n=1, n=2$).</p>
+
+<blockquote>
+  <p><strong>Tối ưu:</strong> Vì chúng ta chỉ cần hai giá trị liền trước để tính giá trị hiện tại, ta có thể chỉ cần dùng 2 biến thay vì cả một mảng, giúp đưa độ phức tạp không gian về $O(1)$.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Độ phức tạp thời gian:</strong> $O(n)$</li>
+  <li><strong>Độ phức tạp không gian:</strong> $O(1)$</li>
+</ul>
+
+<hr />
+
+<h3 id="source-code-tham-khảo">Source code tham khảo</h3>
+<p>Bạn có thể xem mã nguồn chi tiết tại: <a href="https://github.com/hoangdangduy/System_Patterns_Algorithm/tree/Master/Leetcode/src/_70_Climbing_Stairs">GitHub Repository</a></p>
 
 </div>
         </div>
