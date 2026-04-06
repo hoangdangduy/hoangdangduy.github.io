@@ -21,10 +21,33 @@ $$ dp[i] = \min(dp[i-1] + cost[i-1], dp[i-2] + cost[i-2]) $$
 
 **Ví dụ:** `cost = [10, 15, 20]`
 
-| Chỉ số (index) | 0 | 1 | 2 | 3 (Đích) |
-| :--- | :--- | :--- | :--- | :--- |
-| **Cost** | 10 | 15 | 20 | - |
-| **dp[i]** | 0 | 0 | 10 | 15 |
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin: 20px 0;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Chỉ số (index)</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">2</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">3 (Đích)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">Cost</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">15</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">20</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">dp[i]</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">15</td>
+    </tr>
+  </tbody>
+</table>
 
 **Giải thích:**
 - `dp[0] = 0`, `dp[1] = 0` (vì có thể bắt đầu tại 0 hoặc 1).
