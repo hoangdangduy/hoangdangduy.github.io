@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-04-06T07:23:18+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">LeetCode 746: Tính chi phí nhỏ nhất để leo thang</title><link href="/leet-code/algorithm/2026/04/06/leet-code-746-min-cost-climbing-stairs/" rel="alternate" type="text/html" title="LeetCode 746: Tính chi phí nhỏ nhất để leo thang" /><published>2026-04-06T02:14:00+00:00</published><updated>2026-04-06T02:14:00+00:00</updated><id>/leet-code/algorithm/2026/04/06/leet-code-746-min-cost-climbing-stairs</id><content type="html" xml:base="/leet-code/algorithm/2026/04/06/leet-code-746-min-cost-climbing-stairs/"><![CDATA[<h2 id="bài-toán-climbing-stairs">Bài toán: Climbing Stairs</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-04-06T07:48:28+00:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">LeetCode 746: Tính chi phí nhỏ nhất để leo thang</title><link href="/leet-code/algorithm/2026/04/06/leet-code-746-min-cost-climbing-stairs/" rel="alternate" type="text/html" title="LeetCode 746: Tính chi phí nhỏ nhất để leo thang" /><published>2026-04-06T02:14:00+00:00</published><updated>2026-04-06T02:14:00+00:00</updated><id>/leet-code/algorithm/2026/04/06/leet-code-746-min-cost-climbing-stairs</id><content type="html" xml:base="/leet-code/algorithm/2026/04/06/leet-code-746-min-cost-climbing-stairs/"><![CDATA[<h2 id="bài-toán-climbing-stairs">Bài toán: Climbing Stairs</h2>
 
 <p>Link bài toán: <a href="https://leetcode.com/problems/min-cost-climbing-stairs">746. Min Cost Climbing Stairs</a></p>
 
@@ -14,30 +14,30 @@
 
 <p><strong>Ví dụ:</strong> <code class="language-plaintext highlighter-rouge">cost = [10, 15, 20]</code></p>
 
-<table>
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin: 20px 0;">
   <thead>
-    <tr>
-      <th style="text-align: left">Chỉ số (index)</th>
-      <th style="text-align: left">0</th>
-      <th style="text-align: left">1</th>
-      <th style="text-align: left">2</th>
-      <th style="text-align: left">3 (Đích)</th>
+    <tr style="background-color: #f2f2f2;">
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Chỉ số (index)</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">1</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">2</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">3 (Đích)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><strong>Cost</strong></td>
-      <td style="text-align: left">10</td>
-      <td style="text-align: left">15</td>
-      <td style="text-align: left">20</td>
-      <td style="text-align: left">-</td>
+      <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">Cost</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">15</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">20</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>dp[i]</strong></td>
-      <td style="text-align: left">0</td>
-      <td style="text-align: left">0</td>
-      <td style="text-align: left">10</td>
-      <td style="text-align: left">15</td>
+      <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">dp[i]</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">0</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10</td>
+      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">15</td>
     </tr>
   </tbody>
 </table>
